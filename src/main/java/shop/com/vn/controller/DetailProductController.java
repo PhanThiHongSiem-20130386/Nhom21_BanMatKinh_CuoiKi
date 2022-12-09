@@ -1,7 +1,5 @@
 package shop.com.vn.controller;
 
-import shop.com.vn.model.Category;
-import shop.com.vn.model.ListCategoryItem;
 import shop.com.vn.model.Product;
 import shop.com.vn.service.ProductService;
 
