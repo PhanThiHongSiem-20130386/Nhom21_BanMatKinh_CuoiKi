@@ -2,6 +2,7 @@ package shop.com.vn.service;
 
 import shop.com.vn.db.JDBiConnector;
 import shop.com.vn.model.Order;
+import shop.com.vn.model.Payment;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,22 +32,22 @@ public class OrderService {
                     .stream().collect(Collectors.toList());
         });
     }
-//    public static List<Payment> getAllPayment() {
-//        return JDBiConnector.me().withHandle(handle -> {
-//            return handle.createQuery("select * from pay ")
-//
-//                    .mapToBean(Payment.class)
-//                    .stream().collect(Collectors.toList());
-//        });
-//    }
-//    public static Payment getPaymentByIdPm(String idPm) {
-//        return JDBiConnector.me().withHandle(handle -> {
-//            return handle.createQuery("select * from pay  where idPm = ?")
-//                    .bind(0,idPm)
-//                    .mapToBean(Payment.class)
-//                    .stream().collect(Collectors.toList()).get(0);
-//        });
-//    }
+    public static List<Payment> getAllPayment() {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from pay ")
+
+                    .mapToBean(Payment.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+    public static Payment getPaymentByIdPm(String idPm) {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from pay  where idPm = ?")
+                    .bind(0,idPm)
+                    .mapToBean(Payment.class)
+                    .stream().collect(Collectors.toList()).get(0);
+        });
+    }
     public static void deleteProductByIdCart(String idac) {
         JDBiConnector.me().withHandle(h ->
                 h.createUpdate("delete from cart1 where idAccount = ?")
