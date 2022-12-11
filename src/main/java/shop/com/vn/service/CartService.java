@@ -2,6 +2,7 @@ package shop.com.vn.service;
 
 import shop.com.vn.db.JDBiConnector;
 import shop.com.vn.model.Cart;
+import shop.com.vn.model.Product;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,24 @@ public class CartService {
                         .bind(0, idProduct).bind(1, quantity).bind(2, idAccount)
                         .execute()
         );
+    }
+    public static List<Product> getProductByID(String idP) {
+
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from cart1 where idProduct = ?")
+                    .bind(0, idP)
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+    // lấy tất c sp
+    public static List<Product> getAllProduct() {
+
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from cart1 ")
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
     }
 
     public static List<Cart> getAllByIda(String idAccount) {

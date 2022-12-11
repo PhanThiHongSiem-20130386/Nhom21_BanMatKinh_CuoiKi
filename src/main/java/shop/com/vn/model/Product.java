@@ -12,11 +12,11 @@ public class Product implements Serializable {
     private String information;
 
     private int ciditem;
-
+    private int inventory;
     public Product() {
     }
 
-    public Product(int id, String name, String img, long price, boolean isPromo, boolean isNew, String information, int ciditem) {
+    public Product(int id, String name, String img, long price, boolean isPromo, boolean isNew, String information, int ciditem, int inventory) {
         this.id = id;
         this.name = name;
         this.img = img;
@@ -25,6 +25,7 @@ public class Product implements Serializable {
         this.isNew = isNew;
         this.information = information;
         this.ciditem = ciditem;
+        this.inventory = inventory;
     }
 
     public int getId() {
@@ -91,6 +92,14 @@ public class Product implements Serializable {
         this.ciditem = ciditem;
     }
 
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -102,6 +111,7 @@ public class Product implements Serializable {
                 ", isNew=" + isNew +
                 ", information='" + information + '\'' +
                 ", ciditem=" + ciditem +
+                ", inventory=" + inventory +
                 '}';
     }
 }

@@ -82,7 +82,7 @@
                                 if (ac.getIsadmin() == 1) {
                         %>
                         <li class="item-nav user">
-                            <a href="admin.jsp" class="ue">
+                            <a href="overview" class="ue">
                                 </i>Chào <%=ac.getUser()%>
                             </a>
                         </li>
@@ -198,69 +198,13 @@
                                 <input type="search" id="search" placeholder="Tìm kiếm..."/>
                             </div>
                         </li>
-                        <!-- <li class="item-nav user">
-                            <a href="" class="logged">
-                                <i class="ti-user"></i>
-                            </a>
 
-                        </li> -->
-                        <!-- <li class="item-nav cart">
-                            <a href="" class="cart-header" title="giỏ hàng">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
                 <div class="list__nav__item">
                     <ul class="center-nav-mobile">
                         <li>
                             <a href="./index.html" class="mobile-link">Trang chủ</a>
-                        </li>
-                        <li class="cat-item-mobile cat-parent cat-item-2  has-child">
-                            <a href="./KinhMat.html">Kính mát</a>
-                            <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse2"
-                                    aria-expanded="false" aria-controls="collapse2">
-                                <i class="ti-angle-down"></i>
-                            </button>
-                            <!-- <ul class="children collapse" id="collapse2">
-                                <li class="cat-item-mobile item-2-children1 item-public">
-                                    <a href="./KinhMatEmBe.html">Kính mát em bé</a>
-                                </li>
-                                <li class="cat-item-mobile item-2-children2 item-public">
-                                    <a href="./KinhMatNam.html">Kính mát nam</a>
-                                </li>
-                                <li class="cat-item-mobile item-2-children3 item-public">
-                                    <a href="./KinhMatNu.html">Kính mát nữ</a>
-                                </li>
-                            </ul> -->
-                        </li>
-                        <!-- Tròng kính -->
-                        <li class="cat-item-mobile cat-parent cat-item-3  has-child">
-                            <a href="TrongKinh.jsp">Tròng kính</a>
-                            <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse3"
-                                    aria-expanded="false" aria-controls="collapse3">
-                                <i class="ti-angle-down"></i>
-                            </button>
-                            <!-- <ul class="children collapse" id="collapse3">
-                                <li class="cat-item-mobile item-3-children1 item-public">
-                                    <a href="./TrongCan.html">Tròng cận</a>
-                                </li>
-                                <li class="cat-item-mobile item-3-children2 item-public">
-                                    <a href="./TrongChongASXanh.html">Tròng chống ánh xanh</a>
-                                </li>
-                                <li class="cat-item-mobile item-3-children3 item-public">
-                                    <a href="./TrongNgayDem.html">Tròng chốt chói ngày & đêm</a>
-                                </li>
-                                <li class="cat-item-mobile item-3-children3 item-public">
-                                    <a href="./TrongChongUV.HTML">Tròng chốt tia UV</a>
-                                </li>
-                                <li class="cat-item-mobile item-3-children3 item-public">
-                                    <a href="./TrongDoiMau.html">Tròng đổi màu</a>
-                                </li>
-                                <li class="cat-item-mobile item-3-children3 item-public">
-                                    <a href="./TrongSieuMong.html">Tròng siêu mỏng</a>
-                                </li>
-                            </ul> -->
                         </li>
                         <!-- Gọng kính -->
                         <li class="cat-item-mobile cat-parent cat-item-1 has-child">
@@ -269,26 +213,7 @@
                                     aria-expanded="false" aria-controls="collapse1">
                                 <i class="ti-angle-down"></i>
                             </button>
-                            <!-- <ul class="children collapse" id="collapse1">
-                                <li class="cat-item-mobile item-1-children1 item-public">
-                                    <a href="./GongKinhKhongVien.html">Gọng không viền</a>
-                                </li>
-                                <li class="cat-item-mobile item-1-children2 item-public">
-                                    <a href="./GongKinhKimLoai.html">Gọng kính kim loại</a>
-                                </li>
-                                <li class="cat-item-mobile item-1-children3 item-public">
-                                    <a href="./GongKinhNhua.html">Gọng kính nhựa</a>
-                                </li>
-                                <li class="cat-item-mobile item-1-children4 item-public">
-                                    <a href="./GongKinhKimLoai.html">Gọng nhựa phối kim loại</a>
-                                </li>
-                                <li class="cat-item-mobile item-1-children5 item-public">
-                                    <a href="./GongTitan.html">Gọng titan</a>
-                                </li>
-                                <li class="cat-item-mobile item-1-children6 item-public">
-                                    <a href="./GongTron.html">Gọng tròn</a>
-                                </li>
-                            </ul> -->
+
                         </li>
                         <li>
                             <a href="blog" class="mobile-link">Blog</a>

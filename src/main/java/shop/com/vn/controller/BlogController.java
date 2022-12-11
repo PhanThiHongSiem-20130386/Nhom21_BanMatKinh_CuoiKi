@@ -5,10 +5,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "BlogController", value = "/BlogController")
+@WebServlet(name = "BlogController", value = "/blog")
 public class BlogController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 

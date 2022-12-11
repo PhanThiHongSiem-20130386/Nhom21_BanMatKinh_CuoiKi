@@ -1,3 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="shop.com.vn.model.Product" %>
+<%@ page import="shop.com.vn.model.Account" %>
+<%@ page import="shop.com.vn.service.AccountService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -96,8 +100,8 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Tổng quan</a></li>
-			<li><a href="../../../../TH_LAPTRINH/admin/widgets.html"><em class="fa fa-calendar">&nbsp;</em> Quản lí sản phẩm</a></li>
-			<li><a href="../../../../TH_LAPTRINH/admin/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý tài khoản</a></li>
+			<li><a href="account-edit"><em class="fa fa-calendar">&nbsp;</em> Quản lí tài khoản</a></li>
+			<li><a href="product-edit"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý sản phẩm</a></li>
 			<li><a href="../../../../TH_LAPTRINH/admin/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Thống kê</a></li>
 			
 <!--			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>-->
@@ -116,7 +120,7 @@
 <!--					</a></li>-->
 <!--				</ul>-->
 <!--			</li>-->
-			<li><a href="../../../../TH_LAPTRINH/admin/login.html"><em class="fa fa-power-off">&nbsp;</em> Đăng xuất</a></li>
+			<li><a href="profile?command=logout"><em class="fa fa-power-off">&nbsp;</em> Đăng xuất</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -140,9 +144,14 @@
 			<div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
+						<%
+							List<Product>productList = (List<Product>) request.getAttribute("productList");
+
+
+						%>
 						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">120</div>
-							<div class="text-muted">Đơn đặt hàng mới</div>
+							<div class="large"><%=productList.size()%></div>
+							<div class="text-muted">Tổng số lượng sản phẩm</div>
 						</div>
 					</div>
 				</div>
@@ -156,9 +165,12 @@
 				</div>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-orange panel-widget border-right">
+						<%
+							List<Account>accountList = (List<Account>) request.getAttribute("accountList");
+						%>
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">Khách hàng mới</div>
+							<div class="large"><%=accountList.size()%></div>
+							<div class="text-muted">Số lượng khách hàng</div>
 						</div>
 					</div>
 				</div>

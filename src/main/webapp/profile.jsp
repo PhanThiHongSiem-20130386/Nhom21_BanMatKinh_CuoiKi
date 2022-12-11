@@ -1,12 +1,6 @@
-<%@ page import="java.lang.reflect.Array" %>
+
 <%@ page import="shop.com.vn.model.Account" %>
-<%@ page import="shop.com.vn.service.LoginService" %><%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 11/20/2022
-  Time: 2:43 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="shop.com.vn.service.LoginService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

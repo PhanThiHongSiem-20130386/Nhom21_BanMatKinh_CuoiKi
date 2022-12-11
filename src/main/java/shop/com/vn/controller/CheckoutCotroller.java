@@ -18,10 +18,11 @@ public class CheckoutCotroller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Account ac = (Account) request.getSession().getAttribute("auth");
         List<Cart> listCart = CartService.getAllByIda(String.valueOf(ac.getId()));
-        request.setAttribute("listCart",listCart);
-        List<Payment>listPm = OrderService.getAllPayment();
-        request.setAttribute("listPm",listPm);
-        request.getRequestDispatcher("checkout.jsp").forward(request,response);
+        request.setAttribute("listCart", listCart);
+        List<Payment> listPm = OrderService.getAllPayment();
+        request.setAttribute("listPm", listPm);
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
+
     }
 
     @Override
@@ -36,8 +37,8 @@ public class CheckoutCotroller extends HttpServlet {
         Account ac = (Account) request.getSession().getAttribute("auth");
 
 
-        OrderService.insertOrderByIdAcc(firstName,lastName,email,phone,address,payment,String.valueOf(ac.getId()));
+        OrderService.insertOrderByIdAcc(firstName, lastName, email, phone, address, payment, String.valueOf(ac.getId()));
         OrderService.deleteProductByIdCart(String.valueOf(ac.getId()));
-   response.sendRedirect("home");
+        response.sendRedirect("home");
     }
 }

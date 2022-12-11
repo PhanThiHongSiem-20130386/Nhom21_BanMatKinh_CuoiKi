@@ -10,6 +10,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductService {
+    // lấy tất cả sp mới
+    public static List<Product> getAllProduct() {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from product").mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+    public static List<Product> getAllProductI() {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from product where id =?").mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
     //    lấy sản phẩm mới
     public static List<Product> getListProduct() {
 //        xử DB ...
@@ -35,6 +48,7 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
+
 //    lấy danh sách sản phẩm theo cat
     public static List<Product> getListCById(String cid) {
         return JDBiConnector.me().withHandle(handle -> {
@@ -65,6 +79,14 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
+    public static ListCategoryItem getListItemCatBgyId(String idI) {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from categoryitem c where c.id = ?")
+                    .bind(0,idI)
+                    .mapToBean(ListCategoryItem.class)
+                    .stream().collect(Collectors.toList()).get(0);
+        });
+    }
 
 //  lấy phân loại trong menu để lấy tên của phân loại đó để hiển thị lên đường dẫn
    public static ListCategoryItem getItemName(int idI ){
@@ -76,6 +98,7 @@ public class ProductService {
        }
         return null;
    }
+
 
     public static Category getCateName(int idI ){
         for (Category ca:getListCategories() ) {
@@ -112,9 +135,20 @@ public class ProductService {
         });
     }
 
-
+    public static void editProductById(String idProduct, String name,
+                                             String price, String introduce) {
+        JDBiConnector.me().withHandle(h ->
+                h.createUpdate("update product set name =?," +
+                                "price = ?,information =? where id = ?")
+                        .bind(0, name)
+                        .bind(1, price)
+                        .bind(2, introduce)
+                        .bind(3, idProduct)
+                        .execute()
+        );
+    }
     public static void main(String[] args) {
-        System.out.println(getListProductByName("MK_DST01"));
+        System.out.println(getListItemCatById("1"));
     }
 
 }

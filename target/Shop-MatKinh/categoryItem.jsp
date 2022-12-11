@@ -39,12 +39,12 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
 
-                            <li class="breadcrumb-item"><a href="home.jsp">TRANG CHỦ</a></li>
+                            <li class="breadcrumb-item"><a href="home">TRANG CHỦ</a></li>
                             <%
                                 Category c = (Category) request.getAttribute("c");
                                 ListCategoryItem lci = (ListCategoryItem) request.getAttribute("lci");
                             %>
-                            <li class="breadcrumb-item"><a href="detail?id=<%=c.getIdCategory()%>"><%=c.getNameC()%>
+                            <li class="breadcrumb-item"><a href="category?cid=<%=c.getIdCategory()%>"><%=c.getNameC()%>
                             </a></li>
 
                             <li class="breadcrumb-item " aria-current="page"><%=lci.getname()%>
