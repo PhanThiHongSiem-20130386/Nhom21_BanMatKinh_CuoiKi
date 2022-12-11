@@ -25,6 +25,7 @@ public class HomeController extends HttpServlet {
         request.setAttribute("listSlider", listSlider);
 
         request.getRequestDispatcher("home.jsp").forward(request, response);
+
     }
 
     @Override

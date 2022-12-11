@@ -38,7 +38,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
 
-                            <li class="breadcrumb-item"><a href="home.jsp">TRANG CHỦ</a></li>
+                            <li class="breadcrumb-item"><a href="home">TRANG CHỦ</a></li>
                             <%
                                 Category ca = (Category) request.getAttribute("nameC");
 

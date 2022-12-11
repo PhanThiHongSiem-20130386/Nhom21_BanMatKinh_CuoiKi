@@ -22,6 +22,7 @@ public class DetailProductController extends HttpServlet {
         request.getRequestDispatcher("detail.jsp").forward(request, response);
 
 
+
     }
 
     @Override

@@ -25,6 +25,7 @@ public class CategoryIController extends HttpServlet {
         request.setAttribute("lci", lci);
         request.setAttribute("listPByIdi", listPByIdi);
         request.getRequestDispatcher("categoryItem.jsp").forward(request,response);
+
     }
 
     @Override

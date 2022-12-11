@@ -42,6 +42,7 @@ public class profileController extends HttpServlet {
 
 
         request.getRequestDispatcher(url).forward(request,response);
+
     }
 
     @Override

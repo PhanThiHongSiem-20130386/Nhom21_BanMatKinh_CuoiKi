@@ -28,6 +28,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("home");
 
         }
+
     }
 
     @Override

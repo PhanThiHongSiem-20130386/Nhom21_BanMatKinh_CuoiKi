@@ -39,12 +39,12 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
 
-                            <li class="breadcrumb-item"><a href="home.jsp">TRANG CHỦ</a></li>
+                            <li class="breadcrumb-item"><a href="home">TRANG CHỦ</a></li>
                             <%
                                 Category c = (Category) request.getAttribute("c");
                                 ListCategoryItem lci = (ListCategoryItem) request.getAttribute("lci");
                             %>
-                            <li class="breadcrumb-item"><a href="detail?id=<%=c.getIdCategory()%>"><%=c.getNameC()%>
+                            <li class="breadcrumb-item"><a href="category?cid=<%=c.getIdCategory()%>"><%=c.getNameC()%>
                             </a></li>
 
                             <li class="breadcrumb-item " aria-current="page"><%=lci.getname()%>
@@ -53,15 +53,7 @@
                         </ol>
                     </nav>
                 </div>
-                <!-- <div class="category-filtering category-filter-row show-for-medium">
-                    <a href="#" data-open="#shop-sidebar" data-visible-after="true" data-pos="left"
-                        class="filter-button uppercase plain">
-                        <i class="icon-equalizer"></i>
-                        <strong>Lọc</strong>
-                    </a>
-                    <div class="inline-block">
-                    </div>
-                </div> -->
+
             </div>
             <div class="flex-col medium-text-center">
                 <!-- <p class="woocommerce-result-count hide-for-medium">
