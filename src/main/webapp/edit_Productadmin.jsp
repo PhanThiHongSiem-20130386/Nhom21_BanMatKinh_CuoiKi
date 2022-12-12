@@ -36,7 +36,7 @@
             <div class="col-xl-4">
                 <!-- Profile picture card-->
                 <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Ảnh đại diện</div>
+                    <div class="card-header">Hình ảnh</div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="<%=p.getImg()%>" alt="">
                     </div>
@@ -44,9 +44,9 @@
                 </div>
             </div>
             <div class="col-xl-8">
-                <!-- Account details card-->
+                <!-- product details -->
                 <div class="card mb-4">
-                    <div class="card-header">Hồ sơ của tôi</div>
+                    <div class="card-header">Thông tin sản phẩm</div>
                     <div class="card-body">
                         <form action="edit_productadmin" method="post">
                             <!-- Form Group (username)-->
@@ -61,7 +61,7 @@
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName">Gía</label>
+                                    <label class="small mb-1" for="inputFirstName">Giá</label>
                                     <input class="form-control"
                                            name="price"
                                            id="cost" type="text"
@@ -70,7 +70,7 @@
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">Số lượng</label>
                                     <input class="form-control"
-                                           name="quantity"
+                                           name="inventory"
                                            id="inputFirstName" type="text"
                                            placeholder="Enter your first name" value="<%=p.getInventory()%>">
                                 </div>

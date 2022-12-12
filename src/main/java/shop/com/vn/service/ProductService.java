@@ -136,14 +136,15 @@ public class ProductService {
     }
 
     public static void editProductById(String idProduct, String name,
-                                             String price, String introduce) {
+                                             String price, String introduce, String  inventory) {
         JDBiConnector.me().withHandle(h ->
                 h.createUpdate("update product set name =?," +
-                                "price = ?,information =? where id = ?")
+                                "price = ?,information =? , inventory =? where id = ?")
                         .bind(0, name)
                         .bind(1, price)
                         .bind(2, introduce)
-                        .bind(3, idProduct)
+                        .bind(3, inventory)
+                        .bind(4, idProduct)
                         .execute()
         );
     }

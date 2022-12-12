@@ -56,7 +56,7 @@
 <!-- ##### Main Content Wrapper Start ##### -->
 <div class="main-content-wrapper  clearfix">
 
-    <!-- Mobile Nav (max width 767px)-->
+    <!-- Mobile Nav (max width 767px)-->=
     <div class="mobile-nav">
         <!-- Navbar Brand -->
         <div class="amado-navbar-brand">

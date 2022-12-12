@@ -32,7 +32,7 @@
             <h1>Đăng nhập</h1>
             <input name="user" type="text" placeholder="Tên đăng nhập" />
             <input name="pass" type="password" placeholder="Mật khẩu" />
-            <a href="#">Quên mật khẩu?</a>
+            <a href="./forgotpass.jsp">Quên mật khẩu?</a>
             <% String mess = (String) request.getAttribute("mess");
                 if (mess != null) {%>
             <div class="alert-danger"
