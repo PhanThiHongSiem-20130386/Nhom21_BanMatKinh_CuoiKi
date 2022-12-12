@@ -44,7 +44,7 @@
                         <!-- Tròng kính -->
 
                         <li>
-                            <a href="blog">Blog</a>
+                            <a href="blog.jsp">Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -88,19 +88,28 @@
                         </li>
                         <% }%>
                         <% if (ac.getIsadmin() != 1) {%>
-                        <li class="item-nav user">
+                        <li class="item-nav user" style="margin-left: 10px">
                             <a href="profile" class="ue">
-                                <i class="ti-user"></i>Chào <%=ac.getUser()%>
+                               Chào <%=ac.getUser()%>
                             </a>
                         </li>
                         <% }%>
                         <% }%>
 
                         <li class="item-nav ">
+
+                            <%if (ac == null) {%>
+                            <a href="cart1.jsp" class="cart-header" title="giỏ hàng">
+                                <i class="ti-shopping-cart"></i>
+                            </a>
+                            <% }%>
+                            <%if (ac != null) { %>
                             <a href="show-cart" class="cart-header" title="giỏ hàng">
                                 <i class="ti-shopping-cart"></i>
                             </a>
-                            <!--chi tiet gio hang-->
+
+                            <% }%>
+
                             <div class="small-container cart-page">
                                 <table>
                                     <tr>
@@ -160,7 +169,7 @@
                 <i class="  ti-menu-alt"></i>
             </div>
             <div class="nav-mobile-logo">
-                <a href="./index.html">
+                <a href="home">
                     <img src="./image/logo/DST (1089 × 371 px) (4).png" alt="">
                 </a>
             </div>
@@ -182,7 +191,7 @@
         <div class="nav__list__mobile">
             <div class="nav__inner__mobile container">
                 <div class=" list__nav__item">
-                    <a href="./index.html" class="mobile-link icon"
+                    <a href="home" class="mobile-link icon"
                        title="DST Eyewear - Mắt Kính Chính Hãng, Gía tốt #1">
                         <img src="./image/logo/DST (1089 × 371 px) (4).png"
                              class="logo-header-dark-mobile" alt="">
@@ -204,7 +213,7 @@
                 <div class="list__nav__item">
                     <ul class="center-nav-mobile">
                         <li>
-                            <a href="./index.html" class="mobile-link">Trang chủ</a>
+                            <a href="home" class="mobile-link">Trang chủ</a>
                         </li>
                         <!-- Gọng kính -->
                         <li class="cat-item-mobile cat-parent cat-item-1 has-child">
@@ -216,7 +225,7 @@
 
                         </li>
                         <li>
-                            <a href="blog" class="mobile-link">Blog</a>
+                            <a href="blog.jsp" class="mobile-link">Blog</a>
                         </li>
                     </ul>
                 </div>

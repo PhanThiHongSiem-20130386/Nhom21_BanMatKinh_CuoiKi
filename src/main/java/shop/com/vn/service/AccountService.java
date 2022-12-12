@@ -16,6 +16,14 @@ public class AccountService {
                     .stream().collect(Collectors.toList());
         });
     }
+    public static Account getAccount(String idA) {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from account a where a.id=?")
+                    .bind(0,idA)
+                    .mapToBean(Account.class)
+                    .stream().collect(Collectors.toList()).get(0);
+        });
+    }
     public static List<Account> getAllAccount() {
         return JDBiConnector.me().withHandle(handle -> {
             return handle.createQuery("select * from account")

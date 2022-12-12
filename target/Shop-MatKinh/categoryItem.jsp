@@ -53,15 +53,7 @@
                         </ol>
                     </nav>
                 </div>
-                <!-- <div class="category-filtering category-filter-row show-for-medium">
-                    <a href="#" data-open="#shop-sidebar" data-visible-after="true" data-pos="left"
-                        class="filter-button uppercase plain">
-                        <i class="icon-equalizer"></i>
-                        <strong>Lọc</strong>
-                    </a>
-                    <div class="inline-block">
-                    </div>
-                </div> -->
+
             </div>
             <div class="flex-col medium-text-center">
                 <!-- <p class="woocommerce-result-count hide-for-medium">

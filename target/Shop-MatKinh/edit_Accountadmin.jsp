@@ -22,7 +22,7 @@
 <div class="container-xl px-4 mt-4">
 
 
-    <% Account ac = (Account) request.getSession().getAttribute("auth");
+    <% Account ac = (Account) request.getAttribute("account");
 
     %>
     <!-- Account page navigation-->
@@ -52,7 +52,7 @@
                 <div class="card mb-4">
                     <div class="card-header">Hồ sơ của tôi</div>
                     <div class="card-body">
-                        <form action="edit-profile">
+                        <form action="edit_accountadmin" method="post">
                             <!-- Form Group (username)-->
                             <input type="hidden" value="<%=ac.getId()%>" name="idAccount">
                             <div class="mb-3">
@@ -77,7 +77,7 @@
                                 <label class="small mb-1" for="inputEmailAddress">Mật khẩu</label>
                                 <input class="form-control"
                                        name="pass"
-                                       id="inputPass" type="text"
+                                       id="inputPass" type="password"
                                        placeholder="Enter your email address" value="<%=ac.getPass()%>">
                             </div>
 
