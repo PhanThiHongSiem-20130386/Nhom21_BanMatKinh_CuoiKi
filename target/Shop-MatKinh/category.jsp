@@ -1,6 +1,7 @@
 <%@ page import="shop.com.vn.model.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page import="shop.com.vn.model.Product" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,6 +87,8 @@
                     <div class="list-product">
                         <ul class="products">
                             <%
+                                NumberFormat nf = NumberFormat.getInstance();
+                                nf.setMinimumFractionDigits(0);
                                 List<Product> list = (List<Product>) request.getAttribute("list");
                                 for (Product p : list) {
                             %>
@@ -100,7 +103,7 @@
                                     <div class="product-info">
                                         <a href="" class="product-name"><%=p.getName()%>
                                         </a>
-                                        <div class="product-price"><%=p.getPrice()%>đ</div>
+                                        <div class="product-price"><%=nf.format(p.getPrice())%>đ
                                         <!--btn lựa chọn nhanh-->
                                     </div>
                                 </div>

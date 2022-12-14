@@ -105,11 +105,11 @@
                             %>
                             <tr>
                                 <td class="cart_product_img">
-                                    <a href="#"><img src="<%=p.getImg()%>" alt="Product"></a>
+                                    <a href="detail?id=<%=p.getId()%>"><img src="<%=p.getImg()%>" alt="Product"></a>
                                 </td>
                                 <td class="cart_product_desc">
-                                    <h5><%=p.getName()%>
-                                    </h5>
+                                    <a href="detail?id=<%=p.getId()%>"><%=p.getName()%>
+                                    </a>
                                 </td>
                                 <td class="price">
                                     <%=nf.format(p.getPrice())%>
