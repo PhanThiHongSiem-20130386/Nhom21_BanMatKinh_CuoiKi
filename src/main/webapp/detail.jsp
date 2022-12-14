@@ -1,6 +1,6 @@
 <%@ page import="shop.com.vn.model.Product" %>
-<%@ page import="shop.com.vn.model.Account" %>
 <%@ page import="shop.com.vn.model.Cart" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -24,6 +24,8 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <%
+    NumberFormat nf = NumberFormat.getInstance();
+    nf.setMinimumFractionDigits(0);
     Product p = (Product) request.getAttribute("product");
     Cart cart = (Cart) session.getAttribute("cart");
     if (cart == null) {
@@ -61,7 +63,7 @@
                             </div>
                             <span  style="color: #111111">3 Reviews</span>
                         </div>
-                        <div class="product-price-discount" ><span style="color: #111111"><%=p.getPrice()%></span>
+                        <div class="product-price-discount" ><span style="color: #111111"> <%=nf.format(p.getPrice())%>đ</span>
                         </div>
                     </div>
 
