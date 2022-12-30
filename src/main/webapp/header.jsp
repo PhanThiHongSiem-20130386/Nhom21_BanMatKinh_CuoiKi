@@ -79,22 +79,22 @@
                         <%
                             if (ac != null) {
 //                            phân quyền
-                                if (ac.getIsadmin() == 1) {
+                                if (ac.getAssistant() == 0 && ac.getManagerHome() == 0 && ac.getManagerBlog() == 0
+                                        && ac.getManagerProduct() == 0 && ac.getManagerAccount() == 0) {
                         %>
                         <li class="item-nav user">
-                            <a href="overview" class="ue">
-                                </i>Chào <%=ac.getUser()%>
-                            </a>
-                        </li>
-                        <% }%>
-                        <% if (ac.getIsadmin() != 1) {%>
-                        <li class="item-nav user" style="margin-left: 10px">
                             <a href="profile" class="ue">
-                               Chào <%=ac.getUser()%>
+
+                                Chào <%=ac.getUser()%>
                             </a>
                         </li>
-                        <% }%>
-                        <% }%>
+                        <% } else {%>
+                        <li class="item-nav user" style="margin-left: 10px">
+                            <a href="admin-overview" class="ue">
+                                Chào <%=ac.getUser()%>
+                            </a>
+                        </li>
+                        <% }}%>
 
                         <li class="item-nav ">
 

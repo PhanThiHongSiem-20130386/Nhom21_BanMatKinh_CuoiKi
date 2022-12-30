@@ -3,9 +3,9 @@
 <%@ page import="shop.com.vn.model.Product" %>
 <%@ page import="shop.com.vn.model.ListCategoryItem" %>
 <%@ page import="java.text.NumberFormat" %>
+<html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -94,7 +94,7 @@
                                         <a href="detail?id=<%=p.getId()%>" class="product-thumb">
                                             <img src="<%=p.getImg()%>" alt="">
                                         </a>
-                                        <a href="" class="quick-view">Xem nhanh</a>
+
                                     </div>
                                     <div class="product-info">
                                         <a href="" class="product-name"><%=p.getName()%>
@@ -212,6 +212,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function loadMore() {
+        var amount = document.getElementsByClassName("listproduct").length;
+        $.ajax({
+            url: "load-more-product",
+            type: "get", //send it through get method
+            data: {
+                exits: amount
+            },
+            success: function (response) {
+                var productList = document.getElementById("contentProduct");
+                productList.innerHTML += response;
+
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
+</script>
 </body>
 
 </html>

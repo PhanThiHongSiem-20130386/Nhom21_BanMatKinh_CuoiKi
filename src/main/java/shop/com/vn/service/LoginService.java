@@ -21,6 +21,7 @@ public class LoginService {
         if (accounts.size()==0) return null;
         return accounts.get(0);
     }
+    // lấy tài khoản bằng id
     public static Account getAccoutById(String idUser){
         List<Account> accounts = JDBiConnector.me().withHandle(h ->
                 h.createQuery("SELECT * FROM account WHERE id = ? ")
@@ -33,7 +34,7 @@ public class LoginService {
         return accounts.get(0);
     }
 
-
+// kiểm tra tài khoản
 public static Account checkAccount(String user){
     List<Account> accounts = JDBiConnector.me().withHandle(h ->
             h.createQuery("SELECT * FROM account WHERE user = ?")
@@ -48,24 +49,11 @@ public static Account checkAccount(String user){
 //
     public static void signUpA(String user, String pass){
        JDBiConnector.me().withHandle(h ->
-                h.createUpdate("insert into account(user,email,phone,pass,img,isadmin) " +
-                                "VALUES (?,null,null,?,null,2)")
+                h.createUpdate("insert into account(user,email,phone,pass,img,managerAccount,managerProduct" +
+                                ",managerBog,managerHome,assistant)"  +
+                                "VALUES (?,null,null,?,null,0,0,0,0,0)")
                         .bind(0,user)
                         .bind(1,pass)
-                        .execute()
-        );
-    }
-    public static void editProfileAcountById(String pass, String email,
-                                             String phone, String fullName, String address, String id) {
-        JDBiConnector.me().withHandle(h ->
-                h.createUpdate("update account set pass =?," +
-                                "email = ?,phone =?,img=null,fullName=?,address =? where id = ?")
-                        .bind(0, pass)
-                        .bind(1, email)
-                        .bind(2, phone)
-                        .bind(3, fullName)
-                        .bind(4, address)
-                        .bind(5, id)
                         .execute()
         );
     }

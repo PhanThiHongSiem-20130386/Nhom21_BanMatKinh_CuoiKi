@@ -1,5 +1,6 @@
 package shop.com.vn.controller;
 
+import shop.com.vn.service.AccountService;
 import shop.com.vn.service.LoginService;
 
 import javax.servlet.*;
@@ -18,7 +19,7 @@ public class EditProfileController extends HttpServlet {
         String fullName = request.getParameter("fullName");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-        LoginService.editProfileAcountById(pass,email,phone,fullName,address,id);
+        AccountService.editProfileAcountById(pass,email,phone,fullName,address,id);
         response.sendRedirect("profile");
 
     }
