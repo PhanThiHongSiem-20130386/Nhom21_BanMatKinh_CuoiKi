@@ -16,7 +16,7 @@ import java.util.List;
 public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> list = ProductService.getListProduct();
+        List<Product> list = ProductService.get8Product();
 
         List<Slider> listSlider = SliderService.getListSlider();
 

@@ -8,25 +8,28 @@ public class Account implements Serializable {
     private  String email;
     private  String phone;
     private  String pass;
-    private  int isadmin;
     private  String img;
     private  String address;
     private  String fullName;
+    private int managerAccount, managerProduct, managerHome, managerBlog, assistant;
 
-
-    public Account() {
-    }
-
-    public Account(int id, String user, String email, String phone, String pass, int isadmin, String img, String address, String fullName) {
+    public Account(int id, String user, String email, String phone, String pass, String img, String address, String fullName, int managerAccount, int managerProduct, int managerHome, int managerBlog, int assistant) {
         this.id = id;
         this.user = user;
         this.email = email;
         this.phone = phone;
         this.pass = pass;
-        this.isadmin = isadmin;
         this.img = img;
         this.address = address;
         this.fullName = fullName;
+        this.managerAccount = managerAccount;
+        this.managerProduct = managerProduct;
+        this.managerHome = managerHome;
+        this.managerBlog = managerBlog;
+        this.assistant = assistant;
+    }
+
+    public Account() {
     }
 
     public int getId() {
@@ -69,14 +72,6 @@ public class Account implements Serializable {
         this.pass = pass;
     }
 
-    public int getIsadmin() {
-        return isadmin;
-    }
-
-    public void setIsadmin(int isadmin) {
-        this.isadmin = isadmin;
-    }
-
     public String getImg() {
         return img;
     }
@@ -101,6 +96,46 @@ public class Account implements Serializable {
         this.fullName = fullName;
     }
 
+    public int getManagerAccount() {
+        return managerAccount;
+    }
+
+    public void setManagerAccount(int managerAccount) {
+        this.managerAccount = managerAccount;
+    }
+
+    public int getManagerProduct() {
+        return managerProduct;
+    }
+
+    public void setManagerProduct(int managerProduct) {
+        this.managerProduct = managerProduct;
+    }
+
+    public int getManagerHome() {
+        return managerHome;
+    }
+
+    public void setManagerHome(int managerHome) {
+        this.managerHome = managerHome;
+    }
+
+    public int getManagerBlog() {
+        return managerBlog;
+    }
+
+    public void setManagerBlog(int managerBlog) {
+        this.managerBlog = managerBlog;
+    }
+
+    public int getAssistant() {
+        return assistant;
+    }
+
+    public void setAssistant(int assistant) {
+        this.assistant = assistant;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -109,10 +144,14 @@ public class Account implements Serializable {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", pass='" + pass + '\'' +
-                ", isadmin=" + isadmin +
                 ", img='" + img + '\'' +
                 ", address='" + address + '\'' +
                 ", fullName='" + fullName + '\'' +
+                ", managerAccount=" + managerAccount +
+                ", managerProduct=" + managerProduct +
+                ", managerHome=" + managerHome +
+                ", managerBlog=" + managerBlog +
+                ", assistant=" + assistant +
                 '}';
     }
 }
