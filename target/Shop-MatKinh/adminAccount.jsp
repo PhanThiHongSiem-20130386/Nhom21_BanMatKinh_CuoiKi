@@ -1,6 +1,5 @@
 <%@ page import="shop.com.vn.model.Account" %>
 <%@ page import="java.util.List" %>
-<%@ page import="shop.com.vn.service.AccountService" %>
 <%@ page import="shop.com.vn.model.IsAdmin" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -49,30 +48,9 @@
                 <input type="text" class="form-control" placeholder="Tìm kiếm">
             </div>
         </form>
-        <ul class="nav menu">
-            <li class="active"><a href="overview"><em class="fa fa-dashboard">&nbsp;</em> Tổng quan</a></li>
-            <li><a href="account-edit"><em class="fa fa-calendar">&nbsp;</em> Quản lí tài khoản</a></li>
-            <li><a href="product-edit"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý sản phẩm</a></li>
-            <li><a href=""><em class="fa fa-toggle-off">&nbsp;</em> Quản lý cửa hàng</a></li>
-            <li><a href="../../../../TH_LAPTRINH/admin/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Thống kê</a>
-            </li>
+        <jsp:include page="adminMenu.jsp"></jsp:include>
 
-            <!--			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>-->
-            <!--			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">-->
-            <!--				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>-->
-            <!--				</a>-->
-            <!--				<ul class="children collapse" id="sub-item-1">-->
-            <!--					<li><a class="" href="#">-->
-            <!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1-->
-            <!--					</a></li>-->
-            <!--					<li><a class="" href="#">-->
-            <!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2-->
-            <!--					</a></li>-->
-            <!--					<li><a class="" href="#">-->
-            <!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3-->
-            <!--					</a></li>-->
-            <!--				</ul>-->
-            <!--			</li>-->
+        <ul class="nav menu">
             <li><a href="profile?command=logout"><em class="fa fa-power-off">&nbsp;</em> Đăng xuất</a></li>
         </ul>
     </div><!--/.sidebar-->
@@ -86,7 +64,6 @@
                         <tr>
                             <th scope="col">TÊN TÀI KHOẢN</th>
                             <th scope="col">EMAIL</th>
-                            <th scope="col">CHỨC VỤ</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -95,13 +72,13 @@
 
                         <tr>
                             <td>
-                                <a href="edit_accountadmin?idA=<%=acc.getId()%> "style="color: #111111">
+                                <a href="edit_accountadmin?idA=<%=acc.getId()%> " style="color: #111111">
                                     <%=acc.getUser()%>
                                 </a>
                             </td>
                             <td><%=acc.getEmail()%>
                             </td>
-                            <td><%=AccountService.getDepartment(String.valueOf(acc.getIsadmin())).getDepartment()%>
+
                             </td>
 
                         </tr>
@@ -112,32 +89,7 @@
                 <!-- table container -->
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block tm-block-product-categories" style="min-height: 725px;">
-                <h2 class="tm-block-title">Chức vụ</h2>
-                <div class="tm-product-table-container">
-                    <table class="table tm-table-small tm-product-table">
-                        <tbody>
-                        <% List<IsAdmin> listDeparment = (List<IsAdmin>) request.getAttribute("listDeparment");
-                            for (IsAdmin deparment : listDeparment) {
-                        %>
-                        <tr>
-                            <td class="tm-product-name" style="float: left">
-                                <%=deparment.getDepartment()%>
-                            </td>
-                        </tr>
-                        <%}%>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- table container -->
-                <a
-                        href="add-category"
-                        class="btn btn-primary btn-block text-uppercase mb-3"
-                >Thêm chức vụ mới</a
-                >
-            </div>
-        </div>
+
     </div>
 
 

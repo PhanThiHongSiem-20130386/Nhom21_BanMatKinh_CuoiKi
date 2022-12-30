@@ -24,6 +24,7 @@
 
     <% Account ac = (Account) request.getAttribute("account");
 
+
     %>
     <!-- Account page navigation-->
     <div class="container container-profile" style="margin-top: 90px;">
@@ -31,8 +32,6 @@
 
         <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="#" target="__blank">Hồ sơ</a>
-            <a class="nav-link" href="#" target="__blank">Đơn mua</a>
-            <a class="nav-link" href="#" target="__blank">Thông báo</a>
         </nav>
 
 
@@ -55,64 +54,99 @@
                         <form action="edit_accountadmin" method="post">
                             <!-- Form Group (username)-->
                             <input type="hidden" value="<%=ac.getId()%>" name="idAccount">
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Tên đăng nhập</label>
-                                <input class="form-control" id="inputUsername" type="text"
-                                       placeholder="Enter your username" value="<%=ac.getUser()%>">
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <div>
+                                        <label class="small mb-1" for="inputUsername">Tên đăng nhập</label>
+                                        <input class="form-control" id="inputUsername" type="text"
+                                               placeholder="Enter your username" value="<%=ac.getUser()%>">
+                                    </div>
+                                    <div>
+                                        <label class="small mb-1" for="inputFirstName">Tên đầy đủ</label>
+                                        <input class="form-control"
+                                               name="fullName"
+                                               id="inputFirstName" type="text"
+                                               placeholder="Enter your first name" value="<%=ac.getFullName()%>">
+                                    </div>
+                                    <div>
+                                        <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                        <input class="form-control"
+                                               name="email"
+                                               id="inputEmailAddress" type="email"
+                                               placeholder="Enter your email address" value="<%=ac.getEmail()%>">
+                                    </div>
+                                    <div>
+                                        <label class="small mb-1" for="inputLocation">Địa chỉ</label>
+                                        <input class="form-control"
+                                               name="address"
+                                               id="inputLocation" type="text"
+                                               placeholder="Enter your location" value="<%=ac.getAddress()%>">
+                                    </div>
+                                    <div>
+                                        <label class="small mb-1" for="inputPhone">Số điện thoại</label>
+                                        <input class="form-control"
+                                               name="phone"
+                                               id="inputPhone" type="tel"
+                                               placeholder="Enter your phone number" value="<%=ac.getPhone()%>">
+                                    </div>
+                                </div>
+                                <div class="form-group row gx-3 mb-3">
+
+                                    <div class="reviews-counter" style="    margin-left: 100px;">
+                                        <h3>Phân quyền</h3><br>
+                                        <div class="rate">
+
+                                            <input type="checkbox"
+                                                    <% if (ac.getAssistant() == 1) { %>
+                                                    checked
+                                                    <%}%>
+                                                   id="star5" name="asistant"
+                                                   value=<%=ac.getAssistant()%>/>
+                                            <label for="star5" title="text">Trợ lý</label><br>
+
+                                            <input type="checkbox"
+                                                <% if(ac.getManagerAccount()==1){ %>
+                                                   checked
+                                                <%}%>
+                                                   id="star4"
+                                                   name="accountMana"
+                                                   value=<%=ac.getManagerAccount()%>>
+                                            <label for="star4" title="text">Quản lí tài khoản</label><br>
+
+                                            <input type="checkbox"
+                                                    <% if (ac.getManagerProduct() == 1) { %>
+                                                   checked
+                                                    <%}%>
+                                                   id="star3"
+                                                   name="productMana"
+                                                   value="3"/>
+                                            <label for="star3" title="text">Quản lí sản phẩm</label><br>
+                                            <input type="checkbox"
+                                                <% if(ac.getManagerHome()==1){ %>
+                                                   checked
+                                                <%}%>
+                                                   id="star2"
+                                                   name="homeMana"
+                                                   value=<%=ac.getManagerHome()%>
+                                            <label for="star2" title="text">Quản lí trang chủ</label><br>
+                                            <input type="checkbox"
+                                                    <% if (ac.getManagerBlog() == 1) { %>
+                                                   checked
+                                                    <%}%>
+                                                   id="star1" name="blogMana"
+                                                   value=<%=ac.getManagerBlog()%>/>
+                                            <label for="star1" title="text">Quản lí Blog</label><br>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                                <!-- Form Group (first name)-->
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName">Tên đầy đủ</label>
-                                    <input class="form-control"
-                                           name="fullName"
-                                           id="inputFirstName" type="text"
-                                           placeholder="Enter your first name" value="<%=ac.getFullName()%>">
-                                </div>
 
-                            </div>
-                            <!-- Form Row        -->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputEmailAddress">Mật khẩu</label>
-                                <input class="form-control"
-                                       name="pass"
-                                       id="inputPass" type="password"
-                                       placeholder="Enter your email address" value="<%=ac.getPass()%>">
-                            </div>
-
-                            <!-- Form Group (email address)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                <input class="form-control"
-                                       name="email"
-                                       id="inputEmailAddress" type="email"
-                                       placeholder="Enter your email address" value="<%=ac.getEmail()%>">
-                            </div>
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLocation">Địa chỉ</label>
-                                    <input class="form-control"
-                                           name="address"
-                                           id="inputLocation" type="text"
-                                           placeholder="Enter your location" value="<%=ac.getAddress()%>">
-                                </div>
-                            </div>
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                                <!-- Form Group (phone number)-->
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPhone">Số điện thoại</label>
-                                    <input class="form-control"
-                                           name="phone"
-                                           id="inputPhone" type="tel"
-                                           placeholder="Enter your phone number" value="<%=ac.getPhone()%>">
-                                </div>
-                                <!-- Form Group (birthday)-->
-
-                            </div>
-                            <!-- Save changes button-->
                             <button class="btn btn-primary" type="submit">Lưu thông tin</button>
+                            <button class="btn btn-primary" type="submit">Trang chủ</button>
+                            <a href="admin-reserpassword?idA=<%=ac.getId()%>" class="btn btn-primary">Cấp lại mật khẩu</a>
+                            <a href="AdminDeleteAccountController?idA=<%=ac.getId()%>" class="btn btn-primary" >Xóa tài khoản</a>
+
                         </form>
                     </div>
                 </div>

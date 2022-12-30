@@ -17,8 +17,7 @@ public class AdminAccountController extends HttpServlet {
         Account ac = (Account) request.getSession().getAttribute("auth");
 
         List<Account> listAccount = AccountService.getAllAccount();
-        List<IsAdmin> listDeparment = AccountService.getAllDepartment();
-        request.setAttribute("listDeparment", listDeparment);
+
         request.setAttribute("listAccount", listAccount);
         request.getRequestDispatcher("adminAccount.jsp").forward(request, response);
     }

@@ -6,6 +6,7 @@ import shop.com.vn.model.Category;
 import shop.com.vn.model.ListCategoryItem;
 import shop.com.vn.service.LoginService;
 import shop.com.vn.service.ProductService;
+import shop.com.vn.tools.Encode;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -22,17 +23,20 @@ public class SignUpController extends HttpServlet {
         String re_pass = request.getParameter("repass");
         LoginService lg = new LoginService();
         Account account = lg.checkAccount(user);
-        if (account == null) {
-            if (pass.equals(re_pass)) {
-                lg.signUpA(user, pass);
-                response.sendRedirect("home");
+        if (user == null || pass == null || re_pass == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+            if (account == null) {
+                if (pass.equals(re_pass)) {
+                    lg.signUpA(user, Encode.enCodeMD5(pass));
+                    response.sendRedirect("home");
+                } else {
+                    response.sendRedirect("login.jsp");
+                }
             } else {
                 response.sendRedirect("login.jsp");
             }
-        } else {
-            response.sendRedirect("login.jsp");
         }
-
     }
 
 

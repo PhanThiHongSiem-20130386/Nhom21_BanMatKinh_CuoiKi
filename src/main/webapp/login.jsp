@@ -1,3 +1,4 @@
+<%@ page import="shop.com.vn.model.Account" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,7 @@
             <input name="user" type="text" placeholder="Tên " />
             <input name="pass" type="password" placeholder="Mật khẩu" />
             <input name="repass" type="password" placeholder="Nhập lại mật khẩu" />
+
             <button type="submit" >Đăng kí</button>
             <span>Hoặc đăng kí bằng</span>
             <div class="social-container">
@@ -24,10 +26,6 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-
-
-
-
         <form action="login">
             <h1>Đăng nhập</h1>
             <input name="user" type="text" placeholder="Tên đăng nhập" />

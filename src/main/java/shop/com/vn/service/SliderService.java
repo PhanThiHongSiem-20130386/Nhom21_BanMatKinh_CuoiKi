@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SliderService {
+    //lấy ds slider home
+
     public static List<Slider> getListSlider() {
         return JDBiConnector.me().withHandle(handle -> {
             return handle.createQuery("select * from slider ").mapToBean(Slider.class)

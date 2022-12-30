@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "OverviewControll", value = "/overview")
+@WebServlet(name = "OverviewControll", value = "/admin-overview")
 public class OverviewControll extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
