@@ -4,6 +4,7 @@ package shop.com.vn.controller;
 
 import shop.com.vn.model.Account;
 import shop.com.vn.service.LoginService;
+import shop.com.vn.tools.Encode;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,7 +17,7 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
-        Account ac = LoginService.getAccout(user, pass);
+        Account ac = LoginService.getAccout(user, Encode.enCodeMD5(pass) );
 
         if(ac == null){
             request.setAttribute("mess", "Sai user hoặc mật khẩu!");

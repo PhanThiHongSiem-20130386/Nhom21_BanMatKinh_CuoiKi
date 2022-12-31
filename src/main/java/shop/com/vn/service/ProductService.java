@@ -31,7 +31,14 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
-
+    // lấy 8 sp hiển thị home
+    public static List<Product> get8Product() {
+//        xử DB ...
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from product LIMIT 8").mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
     // lấy các danh mục menu
     public static List<Category> getListCategories() {
 //        xử DB ...
@@ -79,14 +86,6 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
-    public static ListCategoryItem getListItemCatBgyId(String idI) {
-        return JDBiConnector.me().withHandle(handle -> {
-            return handle.createQuery("select * from categoryitem c where c.id = ?")
-                    .bind(0,idI)
-                    .mapToBean(ListCategoryItem.class)
-                    .stream().collect(Collectors.toList()).get(0);
-        });
-    }
 
 //  lấy phân loại trong menu để lấy tên của phân loại đó để hiển thị lên đường dẫn
    public static ListCategoryItem getItemName(int idI ){
@@ -100,15 +99,7 @@ public class ProductService {
    }
 
 
-    public static Category getCateName(int idI ){
-        for (Category ca:getListCategories() ) {
-            if(idI == ca.getIdCategory()){
-                return  ca;
-            }
 
-        }
-        return null;
-    }
     public static Product getProductById(String id) {
         return JDBiConnector.me().withHandle(handle -> {
             return handle.createQuery("select * from product  where id = ?")
@@ -147,6 +138,15 @@ public class ProductService {
                         .bind(4, idProduct)
                         .execute()
         );
+    }
+    // hiện thị thêm 8 sp thi chọn sem thêm
+    public static List<Product> getNextTop12Product(int amount) {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM product LIMIT ?,8")
+                    .bind(0, amount)
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
     }
     public static void main(String[] args) {
         System.out.println(getListItemCatById("1"));
