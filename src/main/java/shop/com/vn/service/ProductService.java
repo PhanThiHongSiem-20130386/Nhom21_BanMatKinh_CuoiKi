@@ -6,6 +6,7 @@ import shop.com.vn.model.Category;
 import shop.com.vn.model.ListCategoryItem;
 import shop.com.vn.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
+
     public static List<Product> getAllProductI() {
         return JDBiConnector.me().withHandle(handle -> {
             return handle.createQuery("select * from product where id =?").mapToBean(Product.class)
@@ -98,6 +100,14 @@ public class ProductService {
         return null;
    }
 
+   //phân trang
+    public static List<Product> getListProductByPage(List<Product> arr, int start, int end) {
+    List<Product> list = new ArrayList<Product>();
+    for(int i = start; i < end;i++){
+        list.add(arr.get(i));
+    }
+    return list;
+    }
 
 
     public static Product getProductById(String id) {

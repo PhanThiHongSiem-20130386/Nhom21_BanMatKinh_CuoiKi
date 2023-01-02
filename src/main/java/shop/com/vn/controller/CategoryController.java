@@ -15,28 +15,17 @@ import java.util.List;
 public class CategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Product> arr = ProductService.getAllProduct();
-//        int start =0, end = 8;
-//        if(arr.size() < 100){
-//            end = 8;
-//        }
-//        if(request.getParameter("start") != null){
-//            start = Integer.parseInt(request.getParameter("start"));
-//        }
-//        if(request.getParameter("end") != null){
-//            end = Integer.parseInt(request.getParameter("end"));
-//        }
-//        List<Product> list =  ProductService.getListProductByPage(arr,start,end);
 
         String cid = request.getParameter("cid");
-        List<Product> list = ProductService.getListCById(cid);
+       // List<Product> list = ProductService.getListCById(cid);
         Category ca = ProductService.getNameC(Integer.parseInt(cid));
         String checked = "checked";
         request.setAttribute("checked4", checked);
 
         request.setAttribute("nameC", ca);
-        request.setAttribute("list", list);
-
+        //request.setAttribute("list", list);
+//        request.setAttribute("cid",cid);
+//        request.getAttribute(cid);
         request.getRequestDispatcher("category.jsp").forward(request, response);
 
     }

@@ -16,7 +16,7 @@
             <input name="user" type="text" placeholder="Tên " />
             <input name="pass" type="password" placeholder="Mật khẩu" />
             <input name="repass" type="password" placeholder="Nhập lại mật khẩu" />
-           
+
             <button type="submit" >Đăng kí</button>
             <span>Hoặc đăng kí bằng</span>
             <div class="social-container">

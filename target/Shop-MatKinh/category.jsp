@@ -32,7 +32,8 @@
     <!-- end header -->
     <!-- content -->
     <%
-        List<Product> arr = ProductService.getAllProduct();
+        String cid = request.getParameter("cid");
+        List<Product> arr = ProductService.getListCById(cid);
         int start =0, end = 8;
         if(arr.size() < 8){
             end = arr.size();
@@ -44,7 +45,7 @@
             end = Integer.parseInt(request.getParameter("end"));
         }
         List<Product> list =  ProductService.getListProductByPage(arr,start,end);
-
+        request.setAttribute("list",list);
     %>
 
     <!-- content -->
@@ -132,7 +133,7 @@
                 </div>
 
                 <div style="clear: both"></div>
-                <ul class = "pagination" style ="margin: 20px 0">
+                <ul class = "pagination" style ="justify-content: center">
                    <%
                     int a, b;
                     int limit = arr.size()/8;
@@ -146,7 +147,7 @@
                             b = arr.size();
                         }
                     %>
-                    <li class="page-item " ><a class = "page-link"href="category?cid?start<%=a%>&end<%=b%>"><%=i%></a></li>
+                    <li class="page-item " ><a class = "page-link"href="category?cidstart<%=a%>&end<%=b%>"><%=i%></a></li>
                     <%
                         }
                     %>
