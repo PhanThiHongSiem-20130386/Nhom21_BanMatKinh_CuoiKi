@@ -11,9 +11,9 @@ public class Account implements Serializable {
     private  String img;
     private  String address;
     private  String fullName;
-    private int managerAccount, managerProduct, managerHome, managerBlog, assistant;
+    private int managerAccount, managerProduct, managerHome, managerBlog, assistant,managerOrder;
 
-    public Account(int id, String user, String email, String phone, String pass, String img, String address, String fullName, int managerAccount, int managerProduct, int managerHome, int managerBlog, int assistant) {
+    public Account(int id, String user, String email, String phone, String pass, String img, String address, String fullName, int managerAccount, int managerProduct, int managerHome, int managerBlog, int assistant, int managerOrder) {
         this.id = id;
         this.user = user;
         this.email = email;
@@ -27,6 +27,7 @@ public class Account implements Serializable {
         this.managerHome = managerHome;
         this.managerBlog = managerBlog;
         this.assistant = assistant;
+        this.managerOrder=managerOrder;
     }
 
     public Account() {
@@ -136,6 +137,14 @@ public class Account implements Serializable {
         this.assistant = assistant;
     }
 
+    public int getManagerOrder() {
+        return managerOrder;
+    }
+
+    public void setManagerOrder(int managerOrder) {
+        this.managerOrder = managerOrder;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -152,6 +161,7 @@ public class Account implements Serializable {
                 ", managerHome=" + managerHome +
                 ", managerBlog=" + managerBlog +
                 ", assistant=" + assistant +
+                ", managerOrder=" + managerOrder +
                 '}';
     }
 }

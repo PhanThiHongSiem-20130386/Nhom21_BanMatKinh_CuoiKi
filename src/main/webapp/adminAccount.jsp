@@ -1,6 +1,5 @@
 <%@ page import="shop.com.vn.model.Account" %>
 <%@ page import="java.util.List" %>
-<%@ page import="shop.com.vn.model.IsAdmin" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -55,6 +54,14 @@
         </ul>
     </div><!--/.sidebar-->
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="admin">
+                    <em class="fa fa-home"></em>
+                </a></li>
+                <li class="active">Quản Lí Tài Khoản</li>
+            </ol>
+        </div>
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-products">
                 <h2 class="tm-block-title">Danh sách tài khoản</h2>

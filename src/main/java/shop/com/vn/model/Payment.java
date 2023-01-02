@@ -29,4 +29,12 @@ public class Payment implements Serializable {
     public void setNamePm(String namePm) {
         this.namePm = namePm;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "idPm=" + idPm +
+                ", namePm='" + namePm + '\'' +
+                '}';
+    }
 }

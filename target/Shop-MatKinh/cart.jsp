@@ -33,27 +33,6 @@
 
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<!-- Search Wrapper Area Start -->
-<%--<div class="search-wrapper section-padding-100">--%>
-<%--    <div class="search-close">--%>
-<%--        <i class="fa fa-close" aria-hidden="true"></i>--%>
-<%--    </div>--%>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-12">--%>
-<%--                <div class="search-content">--%>
-<%--                    <form action="#" method="get">--%>
-<%--                        <input type="search" name="search" id="search" placeholder="Type your keyword...">--%>
-<%--                        <button type="submit"><img src="img/core-img/search.png" alt=""></button>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<!-- Search Wrapper Area End -->
-
-<!-- ##### Main Content Wrapper Start ##### -->
 <div class="main-content-wrapper  clearfix">
 
     <!-- Mobile Nav (max width 767px)-->=
@@ -91,8 +70,6 @@
                             </thead>
                             <tbody>
                             <%
-
-
                                 NumberFormat nf = NumberFormat.getInstance();
                                 nf.setMinimumFractionDigits(0);
                                 int totalPrice = 0;
@@ -121,9 +98,9 @@
                                             <div class="cart-quantity-btn">
 
                                                 <a href="cart?command=subItem&product_id=<%=c.getIdProduct()%> "
-                                                   class="btn btn-sm btn-primary btn-minus"
-                                                   style="text-decoration: none;background-color: #fd7e14">
-                                                    <i class="ti-minus"></i>
+                                                   class="btn11"
+                                                   style="text-decoration: none;background-color: #fd7e14; padding: 4px">
+                                                    <i class="ti-minus" style="color: #FFFFFF"></i>
                                                 </a>
 
                                                 <input class="cart-quantity-input" type="text"
@@ -131,9 +108,9 @@
                                                        autocomplete="off" size="2" disabled="">
 
                                                 <a href="cart?command=addItem&product_id=<%=c.getIdProduct()%>"
-                                                   class="btn btn-sm btn-primary btn-minus"
-                                                   style="text-decoration: none; background-color: #fd7e14">
-                                                    <i class="ti-plus"></i>
+                                                   class="btn11"
+                                                   style="text-decoration: none; background-color: #fd7e14;  padding: 4px">
+                                                    <i class="ti-plus" style="color: #FFFFFF"></i>
                                                 </a>
 
                                             </div>

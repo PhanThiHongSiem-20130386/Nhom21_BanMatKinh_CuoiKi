@@ -34,6 +34,7 @@ public class EditAccountAdminController extends HttpServlet {
         String productMana = request.getParameter("productMana");
         String homeMana = request.getParameter("homeMana");
         String blogMana = request.getParameter("blogMana");
+        String orderMana= request.getParameter("orderMana");
 
 
         if(asistant == null ){
@@ -66,6 +67,11 @@ public class EditAccountAdminController extends HttpServlet {
             AccountService.editManaBlog("0",id);
         }else{
             AccountService.editManaBlog("1",id);
+        }
+        if(orderMana == null ){
+            AccountService.editManagerOrder("0",id);
+        }else{
+            AccountService.editManagerOrder("1",id);
         }
         AccountService.editAcountById(email, phone,fullName,address,id);
         response.sendRedirect("account-edit");

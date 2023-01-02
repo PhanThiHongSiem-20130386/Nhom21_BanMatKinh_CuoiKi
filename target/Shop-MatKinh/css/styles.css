@@ -1136,4 +1136,16 @@ i.ti-shopping-cart {
     display: block;
     cursor: pointer;
 }
-#accordion > .ct input { width: 16px; height: 16px; margin-right: 10px;}
+#accordion > .ct input {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+.numberOfCart {
+    position: relative;
+    float: right;
+    margin-top: 22px;
+    color: #fff;
+
+}

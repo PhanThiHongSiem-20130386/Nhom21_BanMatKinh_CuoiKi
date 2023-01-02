@@ -3,18 +3,19 @@ package shop.com.vn.model;
 import java.io.Serializable;
 
 public class Order implements Serializable {
-    private  int idorder;
-    private  String firstName;
-    private  String lastName;
-    private  String email;
-    private  String phone;
-    private  String address;
-    private  int payment;
-    private int idAcc;
+    private int idorder;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+    private String address;
+    private int payment;
+    private int idAcc, status;
+
     public Order() {
     }
 
-    public Order(int idorder, String firstName, String lastName, String email, String phone, String address, int payment, int idAcc) {
+    public Order(int idorder, String firstName, String lastName, String email, String phone, String address, int payment, int idAcc, int status) {
         this.idorder = idorder;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,6 +24,7 @@ public class Order implements Serializable {
         this.address = address;
         this.payment = payment;
         this.idAcc = idAcc;
+        this.status = status;
     }
 
     public int getIdorder() {
@@ -87,5 +89,28 @@ public class Order implements Serializable {
 
     public void setIdAcc(int idAcc) {
         this.idAcc = idAcc;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "idorder=" + idorder +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", payment=" + payment +
+                ", idAcc=" + idAcc +
+                ", status=" + status +
+                '}';
     }
 }

@@ -143,9 +143,9 @@
                             <!-- Form Row-->
 
                             <button class="btn btn-primary" type="submit">Lưu thông tin</button>
-                            <button class="btn btn-primary" type="submit">Trang chủ</button>
                             <a href="admin-reserpassword?idA=<%=ac.getId()%>" class="btn btn-primary">Cấp lại mật khẩu</a>
-                            <a href="AdminDeleteAccountController?idA=<%=ac.getId()%>" class="btn btn-primary" >Xóa tài khoản</a>
+                            <a href="AdminDeleteAccount?idA=<%=ac.getId()%>" class="btn btn-primary" >Xóa tài khoản</a>
+                            <button class="btn btn-primary" type="submit">Trang chủ</button>
 
                         </form>
                     </div>
