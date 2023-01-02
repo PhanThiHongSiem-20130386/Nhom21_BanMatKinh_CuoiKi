@@ -1,13 +1,11 @@
 package shop.com.vn.service;
 
 
-import org.jdbi.v3.core.result.ResultProducer;
 import shop.com.vn.db.JDBiConnector;
 import shop.com.vn.model.Category;
 import shop.com.vn.model.ListCategoryItem;
 import shop.com.vn.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,16 +16,6 @@ public class ProductService {
             return handle.createQuery("select * from product").mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
-    }
-
-
-    //phân trang
-    public static List<Product> getListProductByPage(List<Product> list,int start, int end ){
-        List<Product> result = new ArrayList<Product>();
-        for(int i = start; i < end; i++){
-            result.add(list.get(i));
-        }
-            return result;
     }
     public static List<Product> getAllProductI() {
         return JDBiConnector.me().withHandle(handle -> {
@@ -43,7 +31,14 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
-
+    // lấy 8 sp hiển thị home
+    public static List<Product> get8Product() {
+//        xử DB ...
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from product LIMIT 8").mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
     // lấy các danh mục menu
     public static List<Category> getListCategories() {
 //        xử DB ...
@@ -91,14 +86,6 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
-    public static ListCategoryItem getListItemCatBgyId(String idI) {
-        return JDBiConnector.me().withHandle(handle -> {
-            return handle.createQuery("select * from categoryitem c where c.id = ?")
-                    .bind(0,idI)
-                    .mapToBean(ListCategoryItem.class)
-                    .stream().collect(Collectors.toList()).get(0);
-        });
-    }
 
 //  lấy phân loại trong menu để lấy tên của phân loại đó để hiển thị lên đường dẫn
    public static ListCategoryItem getItemName(int idI ){
@@ -112,15 +99,7 @@ public class ProductService {
    }
 
 
-    public static Category getCateName(int idI ){
-        for (Category ca:getListCategories() ) {
-            if(idI == ca.getIdCategory()){
-                return  ca;
-            }
 
-        }
-        return null;
-    }
     public static Product getProductById(String id) {
         return JDBiConnector.me().withHandle(handle -> {
             return handle.createQuery("select * from product  where id = ?")
@@ -146,17 +125,7 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
-    //search control
-//    public int count(String txtSearch){
-//      //  String query = "SELECT  COUNT(*) FROM product WHERE name LIKE ?";
-//        return JDBiConnector.me().withHandle(handle -> {
-//            return handle.createQuery("SELECT  COUNT(*) FROM product WHERE name LIKE ?")
-//                    .bind(1,"%" + txtSearch + "%")
-//                    .mapToBean(Product.class).stream().mapToInt(product -> Integer.parseInt(product.getName())).sum();
-//        });
-//    }
 
-//chinh sua sp
     public static void editProductById(String idProduct, String name,
                                              String price, String introduce, String  inventory) {
         JDBiConnector.me().withHandle(h ->
@@ -170,14 +139,17 @@ public class ProductService {
                         .execute()
         );
     }
-
-
-
+    // hiện thị thêm 8 sp thi chọn sem thêm
+    public static List<Product> getNextTop12Product(int amount) {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM product LIMIT ?,8")
+                    .bind(0, amount)
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
     public static void main(String[] args) {
-//        ProductService p = new ProductService();
-//        int count = p.count("trong");
-//        System.out.println(count);
-     //   System.out.println(getListItemCatById("1"));
+        System.out.println(getListItemCatById("1"));
     }
 
 }

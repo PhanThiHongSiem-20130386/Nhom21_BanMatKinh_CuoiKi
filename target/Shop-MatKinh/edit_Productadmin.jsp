@@ -25,12 +25,6 @@
     <div class="container container-profile" style="margin-top: 90px;">
 
 
-        <nav class="nav nav-borders">
-            <a class="nav-link active ms-0" href="#" target="__blank">Hồ sơ</a>
-            <a class="nav-link" href="#" target="__blank">Đơn mua</a>
-            <a class="nav-link" href="#" target="__blank">Thông báo</a>
-        </nav>
-
 
         <div class="row">
             <div class="col-xl-4">

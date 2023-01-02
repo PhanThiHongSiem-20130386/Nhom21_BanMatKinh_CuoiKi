@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<%--    <link rel="stylesheet" href="./css/templatemo-style.css"/>--%>
 
     <title>Title</title>
 </head>
@@ -44,30 +45,10 @@
                 <input type="text" class="form-control" placeholder="Tìm kiếm">
             </div>
         </form>
+        <jsp:include page="adminMenu.jsp"></jsp:include>
         <ul class="nav menu">
-            <li class="active"><a href="overview"><em class="fa fa-dashboard">&nbsp;</em> Tổng quan</a></li>
-            <li><a href="account-edit"><em class="fa fa-calendar">&nbsp;</em> Quản lí tài khoản</a></li>
-            <li><a href="product-edit"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý sản phẩm</a></li>
-            <li><a href=""><em class="fa fa-toggle-off">&nbsp;</em> Quản lý cửa hàng</a></li>
-            <li><a href="../../../../TH_LAPTRINH/admin/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Thống kê</a>
-            </li>
 
-            <!--			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>-->
-            <!--			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">-->
-            <!--				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>-->
-            <!--				</a>-->
-            <!--				<ul class="children collapse" id="sub-item-1">-->
-            <!--					<li><a class="" href="#">-->
-            <!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1-->
-            <!--					</a></li>-->
-            <!--					<li><a class="" href="#">-->
-            <!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2-->
-            <!--					</a></li>-->
-            <!--					<li><a class="" href="#">-->
-            <!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3-->
-            <!--					</a></li>-->
-            <!--				</ul>-->
-            <!--			</li>-->
+
             <li><a href="profile?command=logout"><em class="fa fa-power-off">&nbsp;</em> Đăng xuất</a></li>
         </ul>
     </div><!--/.sidebar-->
@@ -76,7 +57,7 @@
             <div class="tm-bg-primary-dark tm-block tm-block-products">
                 <h2 class="tm-block-title">Danh sách sản phẩm</h2>
                 <div class="tm-product-table-container">
-                    <table class="table table-hover tm-table-small tm-product-table">
+                    <table class="table table-hover tm-table-small tm-product-table" style="overflow-y: auto">
                         <thead>
                         <tr>
                             <th scope="col">TÊN SẢN PHẨM</th>
@@ -86,11 +67,8 @@
                         </thead>
                         <tbody>
                         <%
-
                             for (Product p : productList) {
-
                         %>
-
                         <tr>
                             <td>
                                 <a href="edit_productadmin?pid=<%=p.getId()%>" style="color: #111111">
@@ -104,6 +82,8 @@
 
                         </tr>
                         <%}%>
+
+
                         </tbody>
                     </table>
                 </div>

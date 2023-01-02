@@ -114,7 +114,7 @@
                                         <a href="detail?id=<%=p.getId()%>" class="product-thumb">
                                             <img src="<%=p.getImg()%>" alt="">
                                         </a>
-                                        <a href="" class="quick-view">Xem nhanh</a>
+
                                     </div>
                                     <div class="product-info">
                                         <a href="" class="product-name"><%=p.getName()%>
@@ -263,6 +263,28 @@
             $('.check1').not(this).prop('checked', false);
         });
     });
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function loadMore() {
+        var amount = document.getElementsByClassName("listproduct").length;
+        $.ajax({
+            url: "load-more-product",
+            type: "get", //send it through get method
+            data: {
+                exits: amount
+            },
+            success: function (response) {
+                var productList = document.getElementById("contentProduct");
+                productList.innerHTML += response;
+
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
 </script>
 </body>
 

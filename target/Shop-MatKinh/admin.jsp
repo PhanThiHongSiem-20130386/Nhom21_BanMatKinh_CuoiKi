@@ -2,6 +2,7 @@
 <%@ page import="shop.com.vn.model.Product" %>
 <%@ page import="shop.com.vn.model.Account" %>
 <%@ page import="shop.com.vn.service.AccountService" %>
+<%@ page import="shop.com.vn.service.LoginService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -23,8 +24,11 @@
 			<div class="profile-userpic">
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
+			<% Account ac = (Account) request.getSession().getAttribute("auth");
+				Account a1 = LoginService.getAccoutById(String.valueOf(ac.getId()));
+			%>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Tên tài khoản</div>
+				<div class="profile-usertitle-name"><%=a1.getUser()%></div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>đang hoạt động</div>
 			</div>
 			<div class="clear"></div>
@@ -35,29 +39,10 @@
 				<input type="text" class="form-control" placeholder="Tìm kiếm">
 			</div>
 		</form>
-		<ul class="nav menu">
-			<li class="active"><a href="overview"><em class="fa fa-dashboard">&nbsp;</em> Tổng quan</a></li>
-			<li><a href="account-edit"><em class="fa fa-calendar">&nbsp;</em> Quản lí tài khoản</a></li>
-			<li><a href="product-edit"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý sản phẩm</a></li>
-			<li><a href=""><em class="fa fa-toggle-off">&nbsp;</em> Quản lý cửa hàng</a></li>
-			<li><a href="../../../../TH_LAPTRINH/admin/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Thống kê</a></li>
 
-<!--			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>-->
-<!--			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">-->
-<!--				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>-->
-<!--				</a>-->
-<!--				<ul class="children collapse" id="sub-item-1">-->
-<!--					<li><a class="" href="#">-->
-<!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1-->
-<!--					</a></li>-->
-<!--					<li><a class="" href="#">-->
-<!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2-->
-<!--					</a></li>-->
-<!--					<li><a class="" href="#">-->
-<!--						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3-->
-<!--					</a></li>-->
-<!--				</ul>-->
-<!--			</li>-->
+			<jsp:include page="adminMenu.jsp"></jsp:include>
+		<ul class="nav menu">
+
 			<li><a href="profile?command=logout"><em class="fa fa-power-off">&nbsp;</em> Đăng xuất</a></li>
 		</ul>
 	</div><!--/.sidebar-->

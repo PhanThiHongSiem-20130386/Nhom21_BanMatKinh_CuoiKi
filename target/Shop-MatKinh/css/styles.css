@@ -562,6 +562,11 @@ ul.products li .product-info .product-price {
     text-align: center;
     margin-bottom: 10PX;
 }
+.tm-product-table-container {
+    max-height: 465px;
+    margin-bottom: 15px;
+    overflow-y: scroll;
+}
 
 .line {
     width: 20px;
