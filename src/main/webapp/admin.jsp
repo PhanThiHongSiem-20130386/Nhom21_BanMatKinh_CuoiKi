@@ -50,7 +50,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="admin.jsp">
+				<li><a href="admin">
 					<em class="fa fa-home"></em>
 				</a></li>
 				<li class="active">Tổng quan</li>
@@ -239,7 +239,7 @@
 					</div>
 					<div class="panel-footer">
 						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Nhập tin nhắn..." /><span class="input-group-btn">
+							<input id="btn-inpu" type="text" class="form-control input-md" placeholder="Nhập tin nhắn..." /><span class="input-group-btn">
 								<button class="btn btn-primary btn-md" id="btn-chat">Gửi</button>
 						</span></div>
 					</div>

@@ -1,6 +1,8 @@
 package shop.com.vn.model;
 
-public class IsAdmin {
+import java.io.Serializable;
+
+public class IsAdmin implements Serializable {
     private int idAdmin;
     private  String department;
 

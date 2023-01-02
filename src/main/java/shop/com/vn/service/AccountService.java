@@ -103,6 +103,14 @@ public class AccountService {
                         .execute()
         );
     }
+    public static void editManagerOrder(String maanagerOrder, String idA) {
+        JDBiConnector.me().withHandle(h ->
+                h.createUpdate("update account set assistant = ? where id= ?")
+                        .bind(0, maanagerOrder)
+                        .bind(1, idA)
+                        .execute()
+        );
+    }
     // xóa tài khoản
     public static void deleteAccount( String idA) {
         JDBiConnector.me().withHandle(h ->

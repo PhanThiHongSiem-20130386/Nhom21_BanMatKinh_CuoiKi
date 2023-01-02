@@ -68,5 +68,13 @@ public class CartService {
                         .execute()
         );
     }
+    public static List<Cart> getAllItemCart(String idA) {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from cart1 where idAccount=?")
+                    .bind(0,idA)
+                    .mapToBean(Cart.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
 
 }

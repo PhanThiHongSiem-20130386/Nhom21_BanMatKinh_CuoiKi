@@ -1,4 +1,3 @@
-
 <%@ page import="shop.com.vn.model.Account" %>
 <%@ page import="shop.com.vn.service.LoginService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,16 +16,16 @@
     <jsp:include page="header.jsp"></jsp:include>
 
     <% Account ac = (Account) request.getSession().getAttribute("auth");
-    Account a1 = LoginService.getAccoutById(String.valueOf(ac.getId()));
+        Account a1 = LoginService.getAccoutById(String.valueOf(ac.getId()));
     %>
     <!-- Account page navigation-->
     <div class="container container-profile" style="margin-top: 90px;">
 
 
         <nav class="nav nav-borders">
-            <a class="nav-link active ms-0" href="#" target="__blank">Hồ sơ</a>
-            <a class="nav-link" href="#" target="__blank">Đơn mua</a>
-            <a class="nav-link" href="#" target="__blank">Thông báo</a>
+            <a class="nav-link active ms-0" href="profile">Hồ sơ</a>
+            <a class="nav-link" href="buyOrder">Đơn mua</a>
+            <a class="nav-link" href="#">Thông báo</a>
         </nav>
 
 
@@ -52,7 +51,7 @@
                 <div class="card mb-4">
                     <div class="card-header">Hồ sơ của tôi</div>
                     <div class="card-body">
-                        <form action="edit-profile" >
+                        <form action="edit-profile">
                             <!-- Form Group (username)-->
                             <input type="hidden" value="<%=ac.getId()%>" name="idAccount">
                             <div class="mb-3">
@@ -113,7 +112,9 @@
                             </div>
                             <!-- Save changes button-->
                             <button class="btn btn-primary" type="submit">Lưu thông tin</button>
-                            <button class="btn btn-primary" type="button"><a href="profile?command=logout" style=" color: #fff;">Đăng xuất</a></button>
+                            <button class="btn btn-primary" type="button"><a href="profile?command=logout"
+                                                                             style=" color: #fff;">Đăng xuất</a>
+                            </button>
                         </form>
                     </div>
                 </div>

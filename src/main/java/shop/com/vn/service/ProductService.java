@@ -158,6 +158,30 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
+    public static void addProductAdmin( String name, String img,String  price, String promotion, String isNew, String introduce,String idC, String quatity) {
+        JDBiConnector.me().withHandle(h ->
+                h.createUpdate("INSERT INTO product(name,img, price,isPromo, isNew,information,ciditem,inventory) " +
+                                "VALUES (?,?,?,?,?,?,?,?)")
+                        .bind(0, name)
+                        .bind(1, img)
+                        .bind(2, price)
+                        .bind(3, promotion)
+                        .bind(4, isNew)
+                        .bind(5, introduce)
+                        .bind(6, idC)
+                        .bind(7, quatity)
+                        .execute()
+        );
+
+    }
+    //XÓA SẢN PHẨM
+    public static void deleteProduct( String idP) {
+        JDBiConnector.me().withHandle(h ->
+                h.createUpdate("delete   from product where id= ?")
+                        .bind(0, idP)
+                        .execute()
+        );
+    }
     public static void main(String[] args) {
         System.out.println(getListItemCatById("1"));
     }

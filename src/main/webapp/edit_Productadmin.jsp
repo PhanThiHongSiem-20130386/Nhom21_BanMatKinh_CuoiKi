@@ -100,6 +100,7 @@
 
                             <!-- Save changes button-->
                             <button class="btn btn-primary" type="submit">Lưu thông tin</button>
+                            <a href="AdminDeleteProduct?idP=<%=p.getId()%>" class="btn btn-primary" type="submit">Xóa </a>
                         </form>
                     </div>
                 </div>
