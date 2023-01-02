@@ -109,6 +109,14 @@ public class ProductService {
     return list;
     }
 
+    //searrch
+    public static  List<Product> getListByKeyWord(String keyWord){
+        return JDBiConnector.me().withHandle(handle ->{
+            return handle.createQuery("select * from product where name like \"%" + keyWord + "%\" or  infomation like \"%" + keyWord + "%\"")
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        } );
+    }
 
     public static Product getProductById(String id) {
         return JDBiConnector.me().withHandle(handle -> {
