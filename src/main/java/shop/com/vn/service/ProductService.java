@@ -1,11 +1,13 @@
 package shop.com.vn.service;
 
 
+import org.jdbi.v3.core.result.ResultProducer;
 import shop.com.vn.db.JDBiConnector;
 import shop.com.vn.model.Category;
 import shop.com.vn.model.ListCategoryItem;
 import shop.com.vn.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +18,16 @@ public class ProductService {
             return handle.createQuery("select * from product").mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
+    }
+
+
+    //phân trang
+    public static List<Product> getListProductByPage(List<Product> list,int start, int end ){
+        List<Product> result = new ArrayList<Product>();
+        for(int i = start; i < end; i++){
+            result.add(list.get(i));
+        }
+            return result;
     }
     public static List<Product> getAllProductI() {
         return JDBiConnector.me().withHandle(handle -> {
@@ -134,7 +146,17 @@ public class ProductService {
                     .stream().collect(Collectors.toList());
         });
     }
+    //search control
+//    public int count(String txtSearch){
+//      //  String query = "SELECT  COUNT(*) FROM product WHERE name LIKE ?";
+//        return JDBiConnector.me().withHandle(handle -> {
+//            return handle.createQuery("SELECT  COUNT(*) FROM product WHERE name LIKE ?")
+//                    .bind(1,"%" + txtSearch + "%")
+//                    .mapToBean(Product.class).stream().mapToInt(product -> Integer.parseInt(product.getName())).sum();
+//        });
+//    }
 
+//chinh sua sp
     public static void editProductById(String idProduct, String name,
                                              String price, String introduce, String  inventory) {
         JDBiConnector.me().withHandle(h ->
@@ -148,8 +170,14 @@ public class ProductService {
                         .execute()
         );
     }
+
+
+
     public static void main(String[] args) {
-        System.out.println(getListItemCatById("1"));
+//        ProductService p = new ProductService();
+//        int count = p.count("trong");
+//        System.out.println(count);
+     //   System.out.println(getListItemCatById("1"));
     }
 
 }

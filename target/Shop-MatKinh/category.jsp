@@ -2,6 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="shop.com.vn.model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="shop.com.vn.service.ProductService" %>
+<%@ page import="shop.com.vn.model.ListCategoryItem" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +31,21 @@
     <jsp:include page="header.jsp"></jsp:include>
     <!-- end header -->
     <!-- content -->
+    <%
+        List<Product> arr = ProductService.getAllProduct();
+        int start =0, end = 8;
+        if(arr.size() < 8){
+            end = arr.size();
+        }
+        if(request.getParameter("start") != null){
+            start = Integer.parseInt(request.getParameter("start"));
+        }
+        if(request.getParameter("end") != null){
+            end = Integer.parseInt(request.getParameter("end"));
+        }
+        List<Product> list =  ProductService.getListProductByPage(arr,start,end);
 
+    %>
 
     <!-- content -->
     <div class="shop-page-title category-page-title page-title ">
@@ -89,7 +105,7 @@
                             <%
                                 NumberFormat nf = NumberFormat.getInstance();
                                 nf.setMinimumFractionDigits(0);
-                                List<Product> list = (List<Product>) request.getAttribute("list");
+                               // List<Product> list = (List<Product>) request.getAttribute("list");
                                 for (Product p : list) {
                             %>
                             <li>
@@ -107,6 +123,7 @@
                                         <!--btn lựa chọn nhanh-->
                                     </div>
                                 </div>
+                                </div>
                             </li>
                             <%}%>
                         </ul>
@@ -114,6 +131,26 @@
                     </div>
                 </div>
 
+                <div style="clear: both"></div>
+                <ul class = "pagination" style ="margin: 20px 0">
+                   <%
+                    int a, b;
+                    int limit = arr.size()/8;
+                    if(limit * 8 < arr.size()){
+                        limit +=1;
+                    }
+                    for(int i = 1; i <= limit; i++){
+                        a = (i-1) *8;
+                        b = i * 8;
+                        if(b > arr.size()){
+                            b = arr.size();
+                        }
+                    %>
+                    <li class="page-item " ><a class = "page-link"href="category?cid?start<%=a%>&end<%=b%>"><%=i%></a></li>
+                    <%
+                        }
+                    %>
+                </ul>
             </div>
             <!--  content phải -->
             <div class="right-category">
@@ -121,36 +158,32 @@
                     <div class="inner-category">
                         <h6 class="widget-title">Danh mục sản phẩm</h6>
                         <div class="is-divider"></div>
+                        <% List<Category> listCate = ProductService.getListCategories();
+                            List<ListCategoryItem> listItem = ProductService.getListC();
+                            for(Category c : listCate) {
+                        %>
                         <ul class="product-category">
+
                             <li class="cat-item cat-parent cat-item-1 has-child">
-                                <a href="./category.html">Gọng kính</a>
-                                <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse1"
+                                <a href="category?cid=<%=c.getIdCategory()%>"> <%=c.getNameC()%></a>
+                                <button class="toggle collapsed" data-toggle="collapse1" data-target="#collapse1"
                                         aria-expanded="false" aria-controls="collapse1">
                                     <i class="ti-angle-down"></i>
                                 </button>
                                 <ul class="children collapse" id="collapse1">
+                                    <%
+                                        for(ListCategoryItem cc : listItem){
+                                            if(cc.getIdc() == c.getIdCategory()){
+                                    %>
                                     <li class="cat-item item-1-children1 item-public">
-                                        <a href="./GongKinhKhongVien.html">Gọng không viền</a>
+                                        <a href="category?cid=<%=cc.getId()%>"><%=cc.getname()%></a>
                                     </li>
-                                    <li class="cat-item item-1-children2 item-public">
-                                        <a href="./GongKinhKimLoai.html">Gọng kính kim loại</a>
-                                    </li>
-                                    <li class="cat-item item-1-children3 item-public">
-                                        <a href="./GongKinhNhua.html">Gọng kính nhựa</a>
-                                    </li>
-                                    <li class="cat-item item-1-children4 item-public">
-                                        <a href="./GongNhuaPhoiKImLoai.html">Gọng nhựa phối kim loại</a>
-                                    </li>
-                                    <li class="cat-item item-1-children5 item-public">
-                                        <a href="./GongTitan.html">Gọng titan</a>
-                                    </li>
-                                    <li class="cat-item item-1-children6 item-public">
-                                        <a href="./GongTron.html">Gọng tròn</a>
-                                    </li>
+                                    <%}%>
+                                    <%}%>
                                 </ul>
                             </li>
-
-                            <li class="cat-item cat-parent cat-item-2  has-child">
+<!--
+                          <li class="cat-item cat-parent cat-item-2  has-child">
                                 <a href="./KinhMat.html">Kính mát</a>
                                 <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse2"
                                         aria-expanded="false" aria-controls="collapse2">
@@ -196,8 +229,10 @@
                                     </li>
                                 </ul>
                             </li>
-
+-->
                         </ul>
+                        <%}%>
+
                     </div>
                 </div>
 
