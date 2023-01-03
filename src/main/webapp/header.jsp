@@ -54,17 +54,15 @@
 
                 <div class="list-nav" id="right-header">
                     <ul class="right-nav">
-                        <form action="search">
-
+                        <form action="/SearchControl" method="post">
                             <li class="item-nav box">
                                 <div class="container-1">
                                     <button class="icon" type="submit">
                                         <i class="ti-search"></i>
                                     </button>
-                                    <input name="search" type="search" id="search" placeholder="Tìm kiếm..."/>
+                                    <input id="Search"  type="text" value="<%=request.getParameter("keyWord")%>" name="keyWord"  placeholder="Tìm kiếm..."/>
                                 </div>
                             </li>
-
                         </form>
                         <%
                             Account ac = (Account) request.getSession().getAttribute("auth");
