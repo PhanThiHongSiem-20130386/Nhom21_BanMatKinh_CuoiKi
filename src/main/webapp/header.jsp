@@ -5,6 +5,7 @@
 <%@ page import="shop.com.vn.service.ProductService" %>
 <%@ page import="shop.com.vn.model.Cart" %>
 <%@ page import="shop.com.vn.service.CartService" %>
+<%@ page import="com.sun.org.apache.xpath.internal.compiler.Keywords" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header id="header">
@@ -54,16 +55,27 @@
 
                 <div class="list-nav" id="right-header">
                     <ul class="right-nav">
-                        <form action="/SearchControl" method="post">
+                        <%
+                            String keyWordStr = request.getParameter("keyWord");
+                            if(keyWordStr == null){
+                                keyWordStr ="";
+
+                        %>
                             <li class="item-nav box">
                                 <div class="container-1">
                                     <button class="icon" type="submit">
                                         <i class="ti-search"></i>
                                     </button>
-                                    <input id="Search"  type="text" value="<%=request.getParameter("keyWord")%>" name="keyWord"  placeholder="Tìm kiếm..."/>
+                                    <form id="search" action="/SearchControl" method="post" >
+
+                                    <input type="text" value="<%=keyWordStr%>" name="keyWord"  placeholder="Tìm kiếm..."/>
+                                    </form>
+
                                 </div>
                             </li>
-                        </form>
+                        <%
+                            }
+                        %>
                         <%
                             Account ac = (Account) request.getSession().getAttribute("auth");
                             if (ac == null) {
