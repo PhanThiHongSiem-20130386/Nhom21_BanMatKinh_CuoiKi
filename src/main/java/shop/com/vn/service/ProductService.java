@@ -112,7 +112,7 @@ public class ProductService {
     //searrch
     public static  List<Product> getListByKeyWord(String keyWord){
         return JDBiConnector.me().withHandle(handle ->{
-            return handle.createQuery("select * from product where name like \"%" + keyWord + "%\" or  infomation like \"%" + keyWord + "%\"")
+            return handle.createQuery("select * from product where name like \"%" + keyWord + "%\" ")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         } );
@@ -167,7 +167,8 @@ public class ProductService {
         });
     }
     public static void main(String[] args) {
-        System.out.println(getListItemCatById("1"));
+        System.out.println(getListByKeyWord("kinh"));
+        //System.out.println(getListItemCatById("1"));
     }
 
 }
