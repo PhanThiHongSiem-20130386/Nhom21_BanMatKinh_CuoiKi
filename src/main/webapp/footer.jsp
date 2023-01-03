@@ -11,8 +11,8 @@
                 <div id="footer1" class="item-footer">
                     <div class="col-inner1">
 
-                        <h4 style="font-size: 20px;">GIỚI THIỆU</h4>
-                        <span style="font-size: 15px;">
+                        <h4 style="font-size: 20px;color: #111111!important;">GIỚI THIỆU</h4>
+                        <span style="font-size: 15px; color: #FFFFFF!important;">
                                <%=footer.getIntroduce()%>
                             </span>
 
@@ -21,7 +21,7 @@
 
                 <div id="footer2" class="item-footer">
                     <div class="col-inner2">
-                        <h4 style="font-size: 20px;">LIÊN KẾT</h4>
+                        <h4 style="font-size: 20px;color: #111111!important;">LIÊN KẾT</h4>
                         <div class="ux-menu stack stack-col justify-start ux-menu--divider-solid">
                             <div class="ux-menu-link flex menu-item">
                                 <a class="ux-menu-link__link flex">
@@ -52,7 +52,7 @@
 
                 <div id="footer3" class="item-footer">
                     <div class="col-inner">
-                        <h4 style="font-size: 20px;">THÔNG TIN LIÊN HỆ</h4>
+                        <h4 style="font-size: 20px;color: #111111!important;">THÔNG TIN LIÊN HỆ</h4>
 
                         <div class="phone-shop">
                             <a class="ux-menu-link__link flex">
@@ -67,26 +67,27 @@
                                         Địa chỉ:   <%=footer.getAddress()%>
                                     </span>
                             </a>
-                        <div class="mail-shop">
-                            <a class="ux-menu-link__link flex">
+                            <div class="mail-shop">
+                                <a class="ux-menu-link__link flex">
                                     <span class="ux-menu-link__text">
                                         Email:   <%=footer.getEmail()%>
                                     </span>
-                            </a>
-                        </div>
-                        <div class="social-icons follow-icons" style="font-size:115%">
-                            <a href="#" class="slow_fade social_button "><img
-                                    src="assets/image/social_icons/yt.png"></a>
-                            <a href="#" class="slow_fade social_button"><img
-                                    src="assets/image/social_icons/twitter.png"></a>
-                            <a href="#" class="slow_fade social_button"><img
-                                    src="assets/image/social_icons/facebook.png"></a>
+                                </a>
+                            </div>
+                            <div class="social-icons follow-icons" style="font-size:115%">
+                                <a href="#" class="slow_fade social_button "><img
+                                        src="assets/image/social_icons/yt.png"></a>
+                                <a href="#" class="slow_fade social_button"><img
+                                        src="assets/image/social_icons/twitter.png"></a>
+                                <a href="#" class="slow_fade social_button"><img
+                                        src="assets/image/social_icons/facebook.png"></a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
 </div>

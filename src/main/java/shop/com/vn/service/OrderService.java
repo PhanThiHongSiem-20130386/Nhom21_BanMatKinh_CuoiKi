@@ -3,6 +3,7 @@ package shop.com.vn.service;
 import shop.com.vn.db.JDBiConnector;
 import shop.com.vn.model.Order;
 import shop.com.vn.model.Payment;
+import shop.com.vn.model.Status;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +56,29 @@ public class OrderService {
                         .execute()
         );
     }
-
+    public static List<Order> getAllOrder() {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * FROM `order`")
+                    .mapToBean(Order.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+    public static List<Order> getAllOrderById(String idAc) {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * FROM `order` where idacc=? ")
+                    .bind(0, idAc)
+                    .mapToBean(Order.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+    // lấy tất cả các ttangj thái
+    public static List<Status> getAllStatus() {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from  status ")
+                    .mapToBean(Status.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
     public static void main(String[] args) {
         insertOrderByIdAcc("aa","xx","756574","email","dadaaa","1","3");
     }
