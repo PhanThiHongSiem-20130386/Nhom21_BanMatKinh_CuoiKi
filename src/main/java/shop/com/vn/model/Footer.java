@@ -1,6 +1,8 @@
 package shop.com.vn.model;
 
-public class Footer {
+import java.io.Serializable;
+
+public class Footer implements Serializable {
     private int idFooter;
     private  String introduce;
     private  String certify;

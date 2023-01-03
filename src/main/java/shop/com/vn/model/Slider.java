@@ -1,6 +1,8 @@
 package shop.com.vn.model;
 
-public class Slider {
+import java.io.Serializable;
+
+public class Slider implements Serializable {
     private  int idSlide;
     private  String imgSlide;
 

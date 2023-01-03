@@ -53,6 +53,14 @@
         </ul>
     </div><!--/.sidebar-->
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="admin">
+                    <em class="fa fa-home"></em>
+                </a></li>
+                <li class="active">Tổng quan</li>
+            </ol>
+        </div>
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-products">
                 <h2 class="tm-block-title">Danh sách sản phẩm</h2>
@@ -110,7 +118,7 @@
                 </div>
                 <!-- table container -->
                 <a
-                        href="add-category"
+                        href="AddProduct"
                         class="btn btn-primary btn-block text-uppercase mb-3"
                 >Thêm sản phẩm mới</a
                 >

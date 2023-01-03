@@ -3,6 +3,8 @@
 <%@ page import="shop.com.vn.model.ListCategoryItem" %>
 <%@ page import="shop.com.vn.model.Account" %>
 <%@ page import="shop.com.vn.service.ProductService" %>
+<%@ page import="shop.com.vn.model.Cart" %>
+<%@ page import="shop.com.vn.service.CartService" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header id="header">
@@ -83,13 +85,13 @@
                         <li class="item-nav user">
                             <a href="profile" class="ue">
 
-                                Chào <%=ac.getUser()%>
+                               <%=ac.getUser()%>
                             </a>
                         </li>
                         <% } else {%>
                         <li class="item-nav user" style="margin-left: 10px">
                             <a href="admin-overview" class="ue">
-                                Chào <%=ac.getUser()%>
+                                Admin <%=ac.getUser()%>
                             </a>
                         </li>
                         <% }}%>
@@ -100,59 +102,18 @@
                             <a href="cart1.jsp" class="cart-header" title="giỏ hàng">
                                 <i class="ti-shopping-cart"></i>
                             </a>
+                            <div class="numberOfCart">0</div>
                             <% }%>
-                            <%if (ac != null) { %>
+                            <%
+                                if (ac != null) {
+                                    List<Cart> c = (List<Cart>) CartService.getAllItemCart(String.valueOf(ac.getId()));
+                            %>
                             <a href="show-cart" class="cart-header" title="giỏ hàng">
                                 <i class="ti-shopping-cart"></i>
                             </a>
 
+                            <div class="numberOfCart"><%=c.size()%></div>
                             <% }%>
-
-                            <div class="small-container cart-page">
-                                <table>
-                                    <tr>
-                                        <th>Sản phẩm</th>
-                                        <th></th>
-                                        <th>Số lượng</th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                    <tr>
-                                        <div class="cart-info">
-                                            <td>
-                                                <img src="">
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <p>product name</p>
-                                                    <small>Price: 390000</small>
-                                                    <br>
-                                                    <a href="">Remove</a>
-                                                </div>
-                                            </td>
-                                            <td><input type="number" value="1"></td>
-                                        </div>
-                                    </tr>
-                                    </td>
-                                    </tr>
-                                </table>
-                                <div class="total-price">
-                                    <table>
-                                        <tr>
-                                            <td>Giá:</td>
-                                            <td>39000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiền vận chuyển:</td>
-                                            <td>39000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Thành tiền:</td>
-                                            <td>39000</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                 </div>
@@ -223,7 +184,7 @@
 
                         </li>
                         <li>
-                            <a href="blog.jsp" class="mobile-link">Blog</a>
+                            <a href="blog" class="mobile-link">Blog</a>
                         </li>
                     </ul>
                 </div>

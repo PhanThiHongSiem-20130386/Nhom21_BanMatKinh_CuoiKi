@@ -33,7 +33,9 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="https://bizweb.dktcdn.net/100/419/181/themes/809341/assets/slider_3.jpg?1616119031236" alt="First slide">
+                <img class="d-block w-100"
+                     src="https://bizweb.dktcdn.net/100/419/181/themes/809341/assets/slider_3.jpg?1616119031236"
+                     alt="First slide">
 
             </div>
             <%
@@ -78,7 +80,7 @@
                     for (Product p : list) {
                 %>
                 <li>
-                    <div class="product-item-mobile listproduct" >
+                    <div class="product-item-mobile listproduct">
                         <div class="product-top">
                             <a href="detail?id=<%=p.getId()%>" class="product-thumb">
                                 <img src="<%=p.getImg()%>" alt="">
@@ -92,13 +94,18 @@
                             </div>
                             <!--btn lựa chọn nhanh-->
                         </div>
+                        <%
+                            if (p.getInventory() == 0) {
+                        %>
+                        <div class="quantityLast">Hết hàng</div>
+                        <%}%>
                     </div>
                 </li>
                 <% }%>
             </ul>
             <div class="product-all-shop">
 
-                    <button onclick="loadMore()">Xem thêm</button>
+                <button onclick="loadMore()">Xem thêm</button>
 
             </div>
 
