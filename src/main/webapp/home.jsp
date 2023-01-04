@@ -3,6 +3,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ page import="shop.com.vn.model.Slider" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="shop.com.vn.model.Policy" %>
+<%@ page import="shop.com.vn.service.ShopService" %>
+<%@ page import="java.util.Collections" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<%--    <link href="./image/logo/DST%20(1089%20×%20371%20px)%20(4).png" rel="icon"/>--%>
+    <%--    <link href="./image/logo/DST%20(1089%20×%20371%20px)%20(4).png" rel="icon"/>--%>
     <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -253,109 +256,23 @@
 
                             </div>
                             <div class="row">
+                                <%
+                                    List<Policy> policies = (List<Policy>) ShopService.getPolicy();
+                                %>
                                 <div class="row-item col-md-6  col-sm col-12">
+                                    <%
+                                        for (Policy p : policies) {
+                                    %>
                                     <div class="item-warrent">
-                                        <h2>Chính sách bảo hành</h2>
-                                        <p>Chúng tôi tự tin là đơn vị có chế độ hậu mãi tốt nhất Việt Nam khi áp
-                                            dụng
-                                            chính sách bảo hành một năm và đổi trả sản phẩm không cần lí do trong 30
-                                            ngày. Hệ thống dữ liệu được cập nhật liên tục và chính xác để dễ dàng
-                                            tra
-                                            cứu thông tin.</p>
-                                    </div>
-                                </div>
-                                <div class="row-item  col-md-6  col-sm col-12">
-                                    <div class="item-warrent">
-                                        <h2>Thu cũ - đổi mới</h2>
-                                        <p>Thay vì bỏ ra một số tiền lớn để mua kính mắt với dịch vụ “Thu Cũ Đổi
-                                            Mới”-
-                                            GIẢM 10%" đơn hàng kính mắt của DST, quý khách hàng sẽ được hỗ trợ thu
-                                            lại
-                                            kính mắt và tròng cũ với giá cực kỳ ưu đãi, tiết kiệm chi phí nhất có
-                                            thể.
+                                        <h2><%=p.getTopic()%>
+                                        </h2>
+                                        <p><%=p.getContent()%>
                                         </p>
                                     </div>
+                                    -
+                                    <%}%>
                                 </div>
-                                <div class="row-item col-md-6  col-sm col-12">
-                                    <div class="item-warrent">
-                                        <h2>
-                                            Khám mắt miễn phí</h2>
-                                        <p>thực hiện đo khám mắt miễn phí cho khách hàng khi đặt lịch trước 24
-                                            tiếng.
-                                            Với các bác sĩ chuyên khoa, trình độ chuyên môn cao. Tư vấn kính mắt phù
-                                            với
-                                            từng loại bệnh về mắt cho khách hàng.</p>
-                                    </div>
-                                </div>
-                                <div class="row-item col-md-6  col-sm col-12">
-                                    <div class="item-warrent">
-                                        <h2>Vệ sinh và bảo quản mắt kính</h2>
-                                        <p>nhận biết được vấn đề này của mọi người, vậy nên hôm nay DST sẽ hướng dẫn
-                                            bạn
-                                            cách lau chùi, vệ sinh chiếc kính của bạn thật sạch sẽ mỗi ngày, để có
-                                            một
-                                            tầm mình thật sáng rõ và tươi mới.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-policy-mobile">
-                            <div class="headline">
 
-                                <h3 class="section-title section-title-center">
-                                    <b></b>
-                                    <span class="section-title-main" style="color:rgba(76, 110, 43, 0.913);">CHÍNH
-                                            SÁCH
-                                            SHOP</span>
-                                    <b></b>
-                                </h3>
-
-                            </div>
-                            <div class="row-mobile">
-                                <div class="row-item-mobile col-md-6  col-sm col-12">
-                                    <div class="item-warrent-mobile">
-                                        <h2>Chính sách bảo hành</h2>
-                                        <p>Chúng tôi tự tin là đơn vị có chế độ hậu mãi tốt nhất Việt Nam khi áp
-                                            dụng
-                                            chính sách bảo hành một năm và đổi trả sản phẩm không cần lí do trong 30
-                                            ngày. Hệ thống dữ liệu được cập nhật liên tục và chính xác để dễ dàng
-                                            tra
-                                            cứu thông tin.</p>
-                                    </div>
-                                </div>
-                                <div class="row-item-mobile  col-md-6  col-sm col-12">
-                                    <div class="item-warrent-mobile">
-                                        <h2>Thu cũ - đổi mới</h2>
-                                        <p>Thay vì bỏ ra một số tiền lớn để mua kính mắt với dịch vụ “Thu Cũ Đổi
-                                            Mới”-
-                                            GIẢM 10%" đơn hàng kính mắt của DST, quý khách hàng sẽ được hỗ trợ thu
-                                            lại
-                                            kính mắt và tròng cũ với giá cực kỳ ưu đãi, tiết kiệm chi phí nhất có
-                                            thể.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row-item-mobile col-md-6  col-sm col-12">
-                                    <div class="item-warrent-mobile">
-                                        <h2>
-                                            Khám mắt miễn phí</h2>
-                                        <p>thực hiện đo khám mắt miễn phí cho khách hàng khi đặt lịch trước 24
-                                            tiếng.
-                                            Với các bác sĩ chuyên khoa, trình độ chuyên môn cao. Tư vấn kính mắt phù
-                                            với
-                                            từng loại bệnh về mắt cho khách hàng.</p>
-                                    </div>
-                                </div>
-                                <div class="row-item-mobile col-md-6  col-sm col-12">
-                                    <div class="item-warrent-mobile">
-                                        <h2>Vệ sinh và bảo quản mắt kính</h2>
-                                        <p>nhận biết được vấn đề này của mọi người, vậy nên hôm nay DST sẽ hướng dẫn
-                                            bạn
-                                            cách lau chùi, vệ sinh chiếc kính của bạn thật sạch sẽ mỗi ngày, để có
-                                            một
-                                            tầm mình thật sáng rõ và tươi mới.</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

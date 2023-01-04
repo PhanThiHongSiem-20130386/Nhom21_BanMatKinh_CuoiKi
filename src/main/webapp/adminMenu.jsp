@@ -26,12 +26,11 @@
     <li><a href=""><em class="fa fa-toggle-off">&nbsp;</em> Quản lý bình luận</a></li>
     <%}%>
 <%--    <%if (ac.getManagerBlog() == 1) {%>--%>
-<%--    <li><a href=""><em class="fa fa-toggle-off">&nbsp;</em> Quản lý đơn hàng</a></li>--%>
+    <li><a href="list-BlogAdmin"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý Blog</a></li>
 <%--    <%}%>--%>
-
-<%--    <%if (ac.getManagerHome() == 1) {%>--%>
-<%--    <li><a href=""><em class="fa fa-toggle-off">&nbsp;</em> Quản lý cửa hàng</a></li>--%>
-<%--    <%}%>--%>
+    <%if (ac.getManagerHome() == 1) {%>
+    <li><a href="edit_Shopadmin"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý cửa hàng</a></li>
+    <%}%>
     </li>
 </ul>
 </body>

@@ -29,5 +29,13 @@ public class ReviewService {
                     .stream().collect(Collectors.toList());
         });
     }
+    public static List<Review> getAllReview() {
+        return JDBiConnector.me().withHandle(handle -> {
+            return handle.createQuery("select * from review")
 
+                    .mapToBean(Review.class)
+
+                    .stream().collect(Collectors.toList());
+        });
+    }
 }

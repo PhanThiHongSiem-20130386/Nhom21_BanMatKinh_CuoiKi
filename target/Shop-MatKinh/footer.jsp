@@ -1,5 +1,6 @@
-<%@ page import="shop.com.vn.model.Footer" %>
+<%@ page import="shop.com.vn.model.shop" %>
 <%@ page import="shop.com.vn.service.FooterService" %>
+<%@ page import="shop.com.vn.service.ShopService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
     <meta charset="UTF-8">
@@ -21,14 +22,14 @@
         <div id="block_3">
             <div class="ro  container" id="row-1713151878">
                 <%
-                    Footer footer = FooterService.getFooter();
+                    shop shop = ShopService.getShop();
                 %>
                 <div id="footer1" class="item-footer">
                     <div class="col-inner1">
 
                         <h4 style="font-size: 20px;color: #111111!important;">GIỚI THIỆU</h4>
                         <span style="font-size: 15px; color: #FFFFFF!important;">
-                               <%=footer.getIntroduce()%>
+                               <%=shop.getInformation()%>
                             </span>
 
                     </div>
@@ -41,26 +42,11 @@
                             <div class="ux-menu-link flex menu-item">
                                 <a class="ux-menu-link__link flex">
                                         <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
-                                              <%=footer.getCertify()%>
+                                              <%=shop.getLink()%>
                                         </span>
                                 </a>
                             </div>
 
-                            <div class="ux-menu-link flex menu-item">
-                                <a class="ux-menu-link__link flex">
-                                        <span class="ux-menu-link__text" style="color: #FFFFFF!important; ">
-                                              <%=footer.getPay()%>
-                                        </span>
-                                </a>
-                            </div>
-
-                            <div class="ux-menu-link flex menu-item">
-                                <a class="ux-menu-link__link flex">
-                                        <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
-                                              <%=footer.getPromotion()%>
-                                        </span>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,20 +58,20 @@
                         <div class="phone-shop">
                             <a class="ux-menu-link__link flex">
                                     <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
-                                        SĐT:   <%=footer.getPhone()%>
+                                        SĐT:   <%=shop.getPhone()%>
                                     </span>
                             </a>
                         </div>
                         <div class="address-shop">
                             <a class="ux-menu-link__link flex">
                                     <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
-                                        Địa chỉ:   <%=footer.getAddress()%>
+                                        Địa chỉ:   <%=shop.getAddress()%>
                                     </span>
                             </a>
                             <div class="mail-shop">
                                 <a class="ux-menu-link__link flex">
                                     <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
-                                        Email:   <%=footer.getEmail()%>
+                                        Email:   <%=shop.getEmail()%>
                                     </span>
                                 </a>
                             </div>

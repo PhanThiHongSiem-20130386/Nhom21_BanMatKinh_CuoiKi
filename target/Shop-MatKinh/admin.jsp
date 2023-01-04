@@ -3,6 +3,7 @@
 <%@ page import="shop.com.vn.model.Account" %>
 <%@ page import="shop.com.vn.service.AccountService" %>
 <%@ page import="shop.com.vn.service.LoginService" %>
+<%@ page import="shop.com.vn.model.Review" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -80,8 +81,12 @@
 				</div>
 				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 					<div class="panel panel-blue panel-widget border-right">
+						<%
+							List<Review> list = (List<Review>) request.getAttribute("list");
+
+						%>
 						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
-							<div class="large">52</div>
+							<div class="large"><%=list.size()%></div>
 							<div class="text-muted">Lượt đánh giá</div>
 						</div>
 					</div>

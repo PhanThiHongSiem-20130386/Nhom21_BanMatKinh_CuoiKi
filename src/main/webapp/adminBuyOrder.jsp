@@ -6,6 +6,7 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="shop.com.vn.service.ProductOrderService" %>
 <%@ page import="java.util.Collections" %>
+<%@ page import="shop.com.vn.service.LoginService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,8 +34,11 @@
             <div class="profile-userpic">
                 <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
             </div>
+            <% Account ac = (Account) request.getSession().getAttribute("auth");
+                Account a1 = LoginService.getAccoutById(String.valueOf(ac.getId()));
+            %>
             <div class="profile-usertitle">
-                <div class="profile-usertitle-name">Tên tài khoản</div>
+                <div class="profile-usertitle-name"><%=a1.getUser()%></div>
                 <div class="profile-usertitle-status"><span class="indicator label-success"></span>đang hoạt động</div>
             </div>
             <div class="clear"></div>
