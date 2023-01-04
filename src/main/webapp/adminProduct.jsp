@@ -17,7 +17,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <%--    <link rel="stylesheet" href="./css/templatemo-style.css"/>--%>
 
-    <title>Title</title>
+    <title>Quản lí sản phẩm</title>
 </head>
 <body>
 <jsp:include page="headeradmin.jsp"></jsp:include>

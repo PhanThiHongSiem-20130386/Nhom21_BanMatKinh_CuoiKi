@@ -4,8 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Đăng nhập</title>
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
 </head>
 <body>
 
@@ -20,8 +21,8 @@
             <button type="submit" >Đăng kí</button>
             <span>Hoặc đăng kí bằng</span>
             <div class="social-container">
-                <a href="#" class="social"><i class="fab ti-facebook"></i></a>
-                <a href="#" class="social"><i class="fab ti-google"></i></a>
+                <a href="#" class="social"><i class="ti-google"></i></a>
+                <a href="#" class="social"><i class="ti-facebook"></i></a>
             </div>
         </form>
     </div>

@@ -12,9 +12,9 @@
         <div class="header-main nav-dark">
             <div class="header-inner container">
                 <div class=" list-nav" id="logo">
-                    <a href="./index.html" title="DST Eyewear - Mắt Kính Chính Hãng, Gía tốt #1">
+                    <a href="home" title="DST Eyewear - Mắt Kính Chính Hãng, Gía tốt #1">
 
-                        <img src="assets/image/slideHome/logo.png" class="logo-header-dark" alt="">
+                        <img src="./image/logo/DST%20(1089%20×%20371%20px)%20(4).png" class="logo-header-dark" alt="">
 
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                                     <button class="icon" type="submit">
                                         <i class="ti-search"></i>
                                     </button>
-                                    <input name="search" type="search" id="search" placeholder="Tìm kiếm..."/>
+                                    <input name="nameP" type="search"  id ="search" placeholder="Tìm kiếm..."/>
                                 </div>
                             </li>
 
@@ -93,7 +93,7 @@
                         <% } else {%>
                         <li class="item-nav user" style="margin-left: 10px">
                             <a href="admin-overview" class="ue">
-                                Admin <%=ac.getUser()%>
+                                <%=ac.getUser()%>
                             </a>
                         </li>
                         <% }}%>

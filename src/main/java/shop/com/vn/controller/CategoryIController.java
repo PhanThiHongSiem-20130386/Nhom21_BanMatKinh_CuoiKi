@@ -20,7 +20,8 @@ public class CategoryIController extends HttpServlet {
         List<Product> listPByIdi = ProductService.getListItemCatById(idI);
         ListCategoryItem lci = ProductService.getItemName(Integer.parseInt(idI));
         Category c = ProductService.getNameC(lci.getIdc());
-
+        String checked = "checked";
+        request.setAttribute("checked4", checked);
         request.setAttribute("c", c);
         request.setAttribute("lci", lci);
         request.setAttribute("listPByIdi", listPByIdi);

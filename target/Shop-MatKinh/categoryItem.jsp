@@ -3,6 +3,7 @@
 <%@ page import="shop.com.vn.model.Product" %>
 <%@ page import="shop.com.vn.model.ListCategoryItem" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="shop.com.vn.service.ProductService" %>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-    <title>Gọng kính DST</title>
+    <title>DST-Mắt kính Việt</title>
 </head>
 
 <body>
@@ -59,16 +60,16 @@
             <div class="flex-col medium-text-center">
                 <!-- <p class="woocommerce-result-count hide-for-medium">
                     Hiển thị tất cả 11 kết quả</p> -->
-                <form class="woocommerce-ordering" method="get">
-                    <select name="orderby" class="orderby" aria-label="Đơn hàng của cửa hàng">
-                        <option value="popularity" selected='selected'>Thứ tự theo mức độ phổ biến</option>
-                        <option value="rating">Thứ tự theo điểm đánh giá</option>
-                        <option value="date">Mới nhất</option>
-                        <option value="price">Thứ tự theo giá: thấp đến cao</option>
-                        <option value="price-desc">Thứ tự theo giá: cao xuống thấp</option>
-                    </select>
-                    <input type="hidden" name="paged" value="1"/>
-                </form>
+<%--                <form class="woocommerce-ordering" method="get">--%>
+<%--                    <select name="orderby" class="orderby" aria-label="Đơn hàng của cửa hàng">--%>
+<%--                        <option value="popularity" selected='selected'>Thứ tự theo mức độ phổ biến</option>--%>
+<%--                        <option value="rating">Thứ tự theo điểm đánh giá</option>--%>
+<%--                        <option value="date">Mới nhất</option>--%>
+<%--                        <option value="price">Thứ tự theo giá: thấp đến cao</option>--%>
+<%--                        <option value="price-desc">Thứ tự theo giá: cao xuống thấp</option>--%>
+<%--                    </select>--%>
+<%--                    <input type="hidden" name="paged" value="1"/>--%>
+<%--                </form>--%>
             </div>
         </div>
     </div>
@@ -119,81 +120,148 @@
                         <div class="is-divider"></div>
                         <ul class="product-category">
                             <li class="cat-item cat-parent cat-item-1 has-child">
-                                <a href="./category.html">Gọng kính</a>
+                                <a href="category?cid=3">Gọng kính</a>
                                 <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse1"
                                         aria-expanded="false" aria-controls="collapse1">
                                     <i class="ti-angle-down"></i>
                                 </button>
+
                                 <ul class="children collapse" id="collapse1">
+                                    <%  List<ListCategoryItem> listCC3 = ProductService.getListC();
+                                        for (ListCategoryItem cc : listCC3) {
+                                            if (cc.getIdc() == 3) {
+                                    %>
                                     <li class="cat-item item-1-children1 item-public">
-                                        <a href="./GongKinhKhongVien.html">Gọng không viền</a>
+                                        <a href="categoryi?idI=<%=cc.getId()%>"><%= cc.getname() %>
+                                        </a>
                                     </li>
-                                    <li class="cat-item item-1-children2 item-public">
-                                        <a href="./GongKinhKimLoai.html">Gọng kính kim loại</a>
-                                    </li>
-                                    <li class="cat-item item-1-children3 item-public">
-                                        <a href="./GongKinhNhua.html">Gọng kính nhựa</a>
-                                    </li>
-                                    <li class="cat-item item-1-children4 item-public">
-                                        <a href="./GongNhuaPhoiKImLoai.html">Gọng nhựa phối kim loại</a>
-                                    </li>
-                                    <li class="cat-item item-1-children5 item-public">
-                                        <a href="./GongTitan.html">Gọng titan</a>
-                                    </li>
-                                    <li class="cat-item item-1-children6 item-public">
-                                        <a href="./GongTron.html">Gọng tròn</a>
-                                    </li>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                 </ul>
+
                             </li>
 
                             <li class="cat-item cat-parent cat-item-2  has-child">
-                                <a href="./KinhMat.html">Kính mát</a>
+                                <a href="category?cid=1">Kính mát</a>
                                 <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse2"
                                         aria-expanded="false" aria-controls="collapse2">
                                     <i class="ti-angle-down"></i>
                                 </button>
+
                                 <ul class="children collapse" id="collapse2">
+                                    <%  List<ListCategoryItem> listCC1 = ProductService.getListC();
+                                        for (ListCategoryItem cc : listCC1) {
+                                            if (cc.getIdc() == 1) {
+                                    %>
                                     <li class="cat-item item-2-children1 item-public">
-                                        <a href="./KinhMatEmBe.html">Kính mát em bé</a>
+                                        <a href="categoryi?idI=<%=cc.getId()%>"><%= cc.getname() %>
+                                        </a>
                                     </li>
-                                    <li class="cat-item item-2-children2 item-public">
-                                        <a href="./KinhMatNam.html">Kính mát nam</a>
-                                    </li>
-                                    <li class="cat-item item-2-children3 item-public">
-                                        <a href="./KinhMatNu.html">Kính mát nữ</a>
-                                    </li>
+                                    <%}}%>
                                 </ul>
                             </li>
 
                             <li class="cat-item cat-parent cat-item-3  has-child">
-                                <a href="TrongKinh.jsp">Tròng kính</a>
+                                <a href="category?cid=2">Tròng kính</a>
                                 <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse3"
                                         aria-expanded="false" aria-controls="collapse3">
                                     <i class="ti-angle-down"></i>
                                 </button>
                                 <ul class="children collapse" id="collapse3">
+                                    <%  List<ListCategoryItem> listCC2 = ProductService.getListC();
+                                        for (ListCategoryItem cc : listCC2) {
+                                            if (cc.getIdc() == 2) {
+                                    %>
                                     <li class="cat-item item-3-children1 item-public">
-                                        <a href="./TrongCan.html">Tròng cận</a>
+                                        <a href="categoryi?idI=<%=cc.getId()%>"><%= cc.getname() %>
+                                        </a>
                                     </li>
-                                    <li class="cat-item item-3-children2 item-public">
-                                        <a href="./TrongChongASXanh.html">Tròng chống ánh xanh</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongNgayDem.html">Tròng chốt chói ngày & đêm</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongChongUV.HTML">Tròng chốt tia UV</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongDoiMau.html">Tròng đổi màu</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongSieuMong.html">Tròng siêu mỏng</a>
-                                    </li>
+                                    <%}}%>
                                 </ul>
                             </li>
 
                         </ul>
+                        <form action="filter-product">
+                            <input name="cid" value="<%=ca.getIdCategory()%>" type="hidden">
+                            <div class="border-bottom mb-4 pb-4">
+                                <%
+                                    String checked0 = (String) request.getAttribute("checked0");
+                                    String checked1 = (String) request.getAttribute("checked1");
+                                    String checked2 = (String) request.getAttribute("checked2");
+                                    String checked3 = (String) request.getAttribute("checked3");
+                                    String checked4 = (String) request.getAttribute("checked4");
+                                %>
+                                <h5 class="font-weight-semi-bold mb-4">Giá</h5>
+
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            class="custom-control-input check"
+                                            <%=checked4%>
+                                            id="price-all"
+                                            value="1"/>
+                                    <label class="custom-control-label" for="price-all">Tất cả</label>
+                                    <span class="badge border font-weight-normal">70</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            <%=checked0%>
+                                            class="custom-control-input check"
+                                            value="0"
+                                            id="price-1"/>
+                                    <label class="custom-control-label" for="price-1">0 - 300,000đ</label>
+                                    <span class="badge border font-weight-normal">150</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            value="300000"
+                                            <%=checked1%>
+                                            class="custom-control-input check"
+                                            id="price-2"/>
+                                    <label class="custom-control-label" for="price-2">300,000đ - 600,000đ</label>
+                                    <span class="badge border font-weight-normal">295</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            value="600000"
+                                            <%=checked2%>
+                                            class="custom-control-input check"
+                                            id="price-3"/>
+                                    <label class="custom-control-label" for="price-3">600,000đ - 900,000đ</label>
+                                    <span class="badge border font-weight-normal">246</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            value="900000"
+                                            <%=checked3%>
+                                            class="custom-control-input check"
+                                            id="price-4"/>
+                                    <label class="custom-control-label" for="price-4">900,000đ - 1,200,000đ</label>
+                                    <%--                                    <span class="badge border font-weight-normal">246</span>--%>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <button
+                                        class="btn btn-primary btn-block border-0 py-3 "
+                                        style="border-radius: 5px; font-size: 25px; padding: 5px !important;"
+                                        type="submit">
+                                    Lọc
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -233,6 +301,15 @@
             }
         });
     }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.check').click(function () {
+            $('.check').not(this).prop('checked', false);
+        });
+    });
+
 </script>
 </body>
 

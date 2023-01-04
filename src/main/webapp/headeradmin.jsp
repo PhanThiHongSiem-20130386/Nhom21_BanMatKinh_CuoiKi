@@ -1,7 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="shop.com.vn.model.Product" %>
-<%@ page import="shop.com.vn.model.Account" %>
-<%@ page import="shop.com.vn.service.AccountService" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>

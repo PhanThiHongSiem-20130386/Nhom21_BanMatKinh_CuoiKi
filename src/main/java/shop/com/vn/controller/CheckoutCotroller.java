@@ -1,10 +1,9 @@
 package shop.com.vn.controller;
 
-import shop.com.vn.model.Account;
-import shop.com.vn.model.Cart;
-import shop.com.vn.model.Payment;
+import shop.com.vn.model.*;
 import shop.com.vn.service.CartService;
 import shop.com.vn.service.OrderService;
+import shop.com.vn.service.ProductOrderService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -35,9 +34,14 @@ public class CheckoutCotroller extends HttpServlet {
         String payment = request.getParameter("payment");
         String idCart = request.getParameter("idCart");
         Account ac = (Account) request.getSession().getAttribute("auth");
-
+        List<Cart> listCart = CartService.getAllByIda(String.valueOf(ac.getId()));
 
         OrderService.insertOrderByIdAcc(firstName, lastName, email, phone, address, payment, String.valueOf(ac.getId()));
+        List<Order> orderList = OrderService.getAllOrderById(String.valueOf(ac.getId()));
+        String idO = String.valueOf(orderList.get(orderList.size()-1).getIdorder());
+        for (Cart c : listCart) {
+            ProductOrderService.addProductToProductOrder(idO, String.valueOf(c.getIdProduct()), String.valueOf(c.getQuantity()));
+        }
         OrderService.deleteProductByIdCart(String.valueOf(ac.getId()));
         response.sendRedirect("home");
     }

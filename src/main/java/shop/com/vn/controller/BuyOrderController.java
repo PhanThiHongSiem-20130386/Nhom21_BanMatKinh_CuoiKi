@@ -2,9 +2,7 @@ package shop.com.vn.controller;
 
 import shop.com.vn.model.Account;
 import shop.com.vn.model.Order;
-import shop.com.vn.model.Product;
 import shop.com.vn.service.OrderService;
-import shop.com.vn.service.ProductService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,13 +19,10 @@ public class BuyOrderController extends HttpServlet {
 //        String id = request.getParameter("idA");
 //        List<Order> orderList = (List<Order>) OrderService.getAllOrderById(id);
         Account ac = (Account) request.getSession().getAttribute("auth");
-        List<Order> listCart = OrderService.getAllOrderById(String.valueOf(ac.getId()));
-        List<Product>productList = ProductService.getAllProduct();
+        List<Order> orderList = OrderService.getListOrderByIdAcc(String.valueOf(ac.getId()));
 
-        request.getAttribute("productList");
-        request.setAttribute("listCart",listCart);
-//        request.setAttribute("buyOrder",orderList);
-       request.getRequestDispatcher("buyOrder.jsp").forward(request,response);
+        request.setAttribute("orderList", orderList);
+        request.getRequestDispatcher("buyOrder.jsp").forward(request,response);
     }
 
     @Override

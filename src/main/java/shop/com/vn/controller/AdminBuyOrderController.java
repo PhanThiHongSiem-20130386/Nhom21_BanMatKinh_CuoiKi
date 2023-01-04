@@ -3,7 +3,6 @@ package shop.com.vn.controller;
 import shop.com.vn.model.Account;
 import shop.com.vn.model.Cart;
 import shop.com.vn.model.Order;
-import shop.com.vn.model.Status;
 import shop.com.vn.service.CartService;
 import shop.com.vn.service.OrderService;
 
@@ -22,11 +21,8 @@ public class AdminBuyOrderController extends HttpServlet {
         List<Order>orderList = OrderService.getAllOrder();
         Account ac = (Account) request.getSession().getAttribute("auth");
         List<Cart> listCart = CartService.getAllByIda(String.valueOf(ac.getId()));
-        List<Status> listSta = OrderService.getAllStatus();
-        request.setAttribute("listSta", listSta);
-        request.setAttribute("listCart",listCart);
-        request.setAttribute("list",orderList);
 
+        request.setAttribute("orderList",orderList);
         request.getRequestDispatcher("adminBuyOrder.jsp").forward(request,response);
     }
 

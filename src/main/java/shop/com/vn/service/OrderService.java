@@ -3,7 +3,6 @@ package shop.com.vn.service;
 import shop.com.vn.db.JDBiConnector;
 import shop.com.vn.model.Order;
 import shop.com.vn.model.Payment;
-import shop.com.vn.model.Status;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,8 +11,8 @@ public class OrderService {
     public static void insertOrderByIdAcc(String lastName, String firstName, String phone, String email
             , String address, String payment, String idAcc) {
         JDBiConnector.me().withHandle(h ->
-                h.createUpdate("INSERT INTO `order` (firstname, lastname, phone,email,address,payment,idacc)" +
-                                "VALUES (?,?,?,?,?,?,?)")
+                h.createUpdate("INSERT INTO orders (firstname, lastname, phone,email,address,payment,idacc, status)" +
+                                "VALUES (?,?,?,?,?,?,?,1)")
                         .bind(0, firstName)
                         .bind(1, lastName)
                         .bind(2, email)
@@ -27,7 +26,7 @@ public class OrderService {
     }
     public static List<Order> getListOrderByIdAcc(String idAcc) {
         return JDBiConnector.me().withHandle(handle -> {
-            return handle.createQuery("select * from order  where idAcc = ?")
+            return handle.createQuery("select * from orders  where idAcc = ?")
                     .bind(0,idAcc)
                     .mapToBean(Order.class)
                     .stream().collect(Collectors.toList());
@@ -58,28 +57,33 @@ public class OrderService {
     }
     public static List<Order> getAllOrder() {
         return JDBiConnector.me().withHandle(handle -> {
-            return handle.createQuery("select * FROM `order`")
+            return handle.createQuery("select * FROM orders")
                     .mapToBean(Order.class)
                     .stream().collect(Collectors.toList());
         });
     }
     public static List<Order> getAllOrderById(String idAc) {
         return JDBiConnector.me().withHandle(handle -> {
-            return handle.createQuery("select * FROM `order` where idacc=? ")
+            return handle.createQuery("select * FROM orders where idacc=? ")
                     .bind(0, idAc)
                     .mapToBean(Order.class)
                     .stream().collect(Collectors.toList());
         });
     }
     // lấy tất cả các ttangj thái
-    public static List<Status> getAllStatus() {
-        return JDBiConnector.me().withHandle(handle -> {
-            return handle.createQuery("select * from  status ")
-                    .mapToBean(Status.class)
-                    .stream().collect(Collectors.toList());
-        });
+    public static void editStatus(String ido, String status) {
+        JDBiConnector.me().withHandle(h ->
+                h.createUpdate("update orders set status= ? where idorder =?")
+                        .bind(0, status)
+                        .bind(1, ido)
+                        .execute()
+        );
     }
+
+
     public static void main(String[] args) {
-        insertOrderByIdAcc("aa","xx","756574","email","dadaaa","1","3");
+
+
+
     }
 }

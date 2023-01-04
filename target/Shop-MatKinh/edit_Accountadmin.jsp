@@ -1,12 +1,5 @@
-<%@ page import="java.lang.reflect.Array" %>
+
 <%@ page import="shop.com.vn.model.Account" %>
-<%@ page import="shop.com.vn.service.LoginService" %><%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 11/20/2022
-  Time: 2:43 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Title</title>
+    <title>Admin- chỉnh sửa tài khoản</title>
 </head>
 <body>
 <div class="container-xl px-4 mt-4">
@@ -143,9 +136,9 @@
                             <!-- Form Row-->
 
                             <button class="btn btn-primary" type="submit">Lưu thông tin</button>
-                            <button class="btn btn-primary" type="submit">Trang chủ</button>
                             <a href="admin-reserpassword?idA=<%=ac.getId()%>" class="btn btn-primary">Cấp lại mật khẩu</a>
-                            <a href="AdminDeleteAccountController?idA=<%=ac.getId()%>" class="btn btn-primary" >Xóa tài khoản</a>
+                            <a href="AdminDeleteAccount?idA=<%=ac.getId()%>" class="btn btn-primary" >Xóa tài khoản</a>
+                            <button class="btn btn-primary" type="submit">Trang chủ</button>
 
                         </form>
                     </div>

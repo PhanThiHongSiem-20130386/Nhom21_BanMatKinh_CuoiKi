@@ -146,10 +146,10 @@
                         <div class="cart-btn mt-100">
                             <%
                                 if (cartList.size() == 0) { %>
-                            <p class="btn amado-btn w-100">Giỏ hàng của bạn không có sản phẩm</p>
+                            <p class="btn amado-btn w-100" style="background-color: orange; color: #242424">Giỏ hàng của bạn không có sản phẩm</p>
                             <%} else {%>
 
-                            <a href="checkout" class="btn amado-btn w-100">Thanh toán</a>
+                            <a href="checkout" class="btn amado-btn w-100"style="background-color: orange; color: #242424">Thanh toán</a>
                             <%}%>
                         </div>
                     </div>

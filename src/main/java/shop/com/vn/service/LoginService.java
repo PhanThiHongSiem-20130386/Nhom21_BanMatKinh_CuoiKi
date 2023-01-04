@@ -49,9 +49,8 @@ public static Account checkAccount(String user){
 //
     public static void signUpA(String user, String pass){
        JDBiConnector.me().withHandle(h ->
-                h.createUpdate("insert into account(user,email,phone,pass,img,managerAccount,managerProduct" +
-                                ",managerBog,managerHome,assistant)"  +
-                                "VALUES (?,null,null,?,null,0,0,0,0,0)")
+                h.createUpdate("insert into account (user,email,phone,pass,img,managerAccount,managerProduct,managerBog,managerHome,assistant,managerOrder)"  +
+                                "VALUES (?,null,null,?,null,0,0,0,0,0,0)")
                         .bind(0,user)
                         .bind(1,pass)
                         .execute()
@@ -59,6 +58,7 @@ public static Account checkAccount(String user){
     }
 
     public static void main(String[] args){
+        signUpA("truc","1");
     }
 
 

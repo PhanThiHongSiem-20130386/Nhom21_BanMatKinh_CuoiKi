@@ -20,7 +20,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-    <title>Gọng kính DST</title>
+    <title>DST-Mắt kính Việt</title>
 </head>
 
 <body>
@@ -31,22 +31,22 @@
     <jsp:include page="header.jsp"></jsp:include>
     <!-- end header -->
     <!-- content -->
-    <%
-        String cid = request.getParameter("cid");
-        List<Product> arr = ProductService.getListCById(cid);
-        int start =0, end = 8;
-        if(arr.size() < 8){
-            end = arr.size();
-        }
-        if(request.getParameter("start") != null){
-            start = Integer.parseInt(request.getParameter("start"));
-        }
-        if(request.getParameter("end") != null){
-            end = Integer.parseInt(request.getParameter("end"));
-        }
-        List<Product> list =  ProductService.getListProductByPage(arr,start,end);
-        request.setAttribute("list",list);
-    %>
+<%--    <%--%>
+<%--        String cid = request.getParameter("cid");--%>
+<%--        List<Product> arr = ProductService.getListCById(cid);--%>
+<%--        int start = 0, end = 8;--%>
+<%--        if (arr.size() < 8) {--%>
+<%--            end = arr.size();--%>
+<%--        }--%>
+<%--        if (request.getParameter("start") != null) {--%>
+<%--            start = Integer.parseInt(request.getParameter("start"));--%>
+<%--        }--%>
+<%--        if (request.getParameter("end") != null) {--%>
+<%--            end = Integer.parseInt(request.getParameter("end"));--%>
+<%--        }--%>
+<%--        List<Product> list = ProductService.getListProductByPage(arr, start, end);--%>
+<%--        request.setAttribute("list", list);--%>
+<%--    %>--%>
 
     <!-- content -->
     <div class="shop-page-title category-page-title page-title ">
@@ -106,7 +106,7 @@
                             <%
                                 NumberFormat nf = NumberFormat.getInstance();
                                 nf.setMinimumFractionDigits(0);
-                               // List<Product> list = (List<Product>) request.getAttribute("list");
+                                 List<Product> list = (List<Product>) request.getAttribute("list");
                                 for (Product p : list) {
                             %>
                             <li>
@@ -121,9 +121,9 @@
                                         <a href="" class="product-name"><%=p.getName()%>
                                         </a>
                                         <div class="product-price"><%=nf.format(p.getPrice())%>đ
-                                        <!--btn lựa chọn nhanh-->
+                                            <!--btn lựa chọn nhanh-->
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             </li>
                             <%}%>
@@ -133,24 +133,25 @@
                 </div>
 
                 <div style="clear: both"></div>
-                <ul class = "pagination" style ="justify-content: center">
-                   <%
-                    int a, b;
-                    int limit = arr.size()/8;
-                    if(limit * 8 < arr.size()){
-                        limit +=1;
-                    }
-                    for(int i = 1; i <= limit; i++){
-                        a = (i-1) *8;
-                        b = i * 8;
-                        if(b > arr.size()){
-                            b = arr.size();
-                        }
-                    %>
-                    <li class="page-item " ><a class = "page-link"href="category?cidstart<%=a%>&end<%=b%>"><%=i%></a></li>
-                    <%
-                        }
-                    %>
+                <ul class="pagination" style="justify-content: center">
+<%--                    <%--%>
+<%--                        int a, b;--%>
+<%--                        int limit = arr.size() / 8;--%>
+<%--                        if (limit * 8 < arr.size()) {--%>
+<%--                            limit += 1;--%>
+<%--                        }--%>
+<%--                        for (int i = 1; i <= limit; i++) {--%>
+<%--                            a = (i - 1) * 8;--%>
+<%--                            b = i * 8;--%>
+<%--                            if (b > arr.size()) {--%>
+<%--                                b = arr.size();--%>
+<%--                            }--%>
+<%--                    %>--%>
+<%--                    <li class="page-item "><a class="page-link" href="category?cidstart<%=a%>&end<%=b%>"><%=i%>--%>
+<%--                    </a></li>--%>
+<%--                    <%--%>
+<%--                        }--%>
+<%--                    %>--%>
                 </ul>
             </div>
             <!--  content phải -->
@@ -159,80 +160,156 @@
                     <div class="inner-category">
                         <h6 class="widget-title">Danh mục sản phẩm</h6>
                         <div class="is-divider"></div>
-                        <% List<Category> listCate = ProductService.getListCategories();
-                            List<ListCategoryItem> listItem = ProductService.getListC();
-                            for(Category c : listCate) {
-                        %>
                         <ul class="product-category">
-
                             <li class="cat-item cat-parent cat-item-1 has-child">
-                                <a href="category?cid=<%=c.getIdCategory()%>"> <%=c.getNameC()%></a>
-                                <button class="toggle collapsed" data-toggle="collapse1" data-target="#collapse1"
+                                <a href="category?cid=3">Gọng kính</a>
+                                <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse1"
                                         aria-expanded="false" aria-controls="collapse1">
                                     <i class="ti-angle-down"></i>
                                 </button>
+
                                 <ul class="children collapse" id="collapse1">
-                                    <%
-                                        for(ListCategoryItem cc : listItem){
-                                            if(cc.getIdc() == c.getIdCategory()){
+                                    <% List<ListCategoryItem> listCC3 = ProductService.getListC();
+                                        for (ListCategoryItem cc : listCC3) {
+                                            if (cc.getIdc() == 3) {
                                     %>
                                     <li class="cat-item item-1-children1 item-public">
-                                        <a href="category?cid=<%=cc.getId()%>"><%=cc.getname()%></a>
+                                        <a href="categoryi?idI=<%=cc.getId()%>"><%= cc.getname() %>
+                                        </a>
                                     </li>
-                                    <%}%>
-                                    <%}%>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                 </ul>
+
                             </li>
-<!--
-                          <li class="cat-item cat-parent cat-item-2  has-child">
-                                <a href="./KinhMat.html">Kính mát</a>
+
+                            <li class="cat-item cat-parent cat-item-2  has-child">
+                                <a href="category?cid=1">Kính mát</a>
                                 <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse2"
                                         aria-expanded="false" aria-controls="collapse2">
                                     <i class="ti-angle-down"></i>
                                 </button>
+
                                 <ul class="children collapse" id="collapse2">
+                                    <% List<ListCategoryItem> listCC1 = ProductService.getListC();
+                                        for (ListCategoryItem cc : listCC1) {
+                                            if (cc.getIdc() == 1) {
+                                    %>
                                     <li class="cat-item item-2-children1 item-public">
-                                        <a href="./KinhMatEmBe.html">Kính mát em bé</a>
+                                        <a href="categoryi?idI=<%=cc.getId()%>"><%= cc.getname() %>
+                                        </a>
                                     </li>
-                                    <li class="cat-item item-2-children2 item-public">
-                                        <a href="./KinhMatNam.html">Kính mát nam</a>
-                                    </li>
-                                    <li class="cat-item item-2-children3 item-public">
-                                        <a href="./KinhMatNu.html">Kính mát nữ</a>
-                                    </li>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                 </ul>
                             </li>
 
                             <li class="cat-item cat-parent cat-item-3  has-child">
-                                <a href="TrongKinh.jsp">Tròng kính</a>
+                                <a href="category?cid=2">Tròng kính</a>
                                 <button class="toggle collapsed" data-toggle="collapse" data-target="#collapse3"
                                         aria-expanded="false" aria-controls="collapse3">
                                     <i class="ti-angle-down"></i>
                                 </button>
                                 <ul class="children collapse" id="collapse3">
+                                    <% List<ListCategoryItem> listCC2 = ProductService.getListC();
+                                        for (ListCategoryItem cc : listCC2) {
+                                            if (cc.getIdc() == 2) {
+                                    %>
                                     <li class="cat-item item-3-children1 item-public">
-                                        <a href="./TrongCan.html">Tròng cận</a>
+                                        <a href="categoryi?idI=<%=cc.getId()%>"><%= cc.getname() %>
+                                        </a>
                                     </li>
-                                    <li class="cat-item item-3-children2 item-public">
-                                        <a href="./TrongChongASXanh.html">Tròng chống ánh xanh</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongNgayDem.html">Tròng chốt chói ngày & đêm</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongChongUV.HTML">Tròng chốt tia UV</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongDoiMau.html">Tròng đổi màu</a>
-                                    </li>
-                                    <li class="cat-item item-3-children3 item-public">
-                                        <a href="./TrongSieuMong.html">Tròng siêu mỏng</a>
-                                    </li>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                 </ul>
                             </li>
--->
+
                         </ul>
-                        <%}%>
+                        <form action="filter-product">
+                            <input name="cid" value="<%=ca.getIdCategory()%>" type="hidden">
+                            <div class="border-bottom mb-4 pb-4">
+                                <%
+                                    String checked0 = (String) request.getAttribute("checked0");
+                                    String checked1 = (String) request.getAttribute("checked1");
+                                    String checked2 = (String) request.getAttribute("checked2");
+                                    String checked3 = (String) request.getAttribute("checked3");
+                                    String checked4 = (String) request.getAttribute("checked4");
+                                %>
+                                <h5 class="font-weight-semi-bold mb-4">Giá</h5>
+
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            class="custom-control-input check"
+                                            <%=checked4%>
+                                            id="price-all"
+                                            value="1"/>
+                                    <label class="custom-control-label" for="price-all" style="padding-left: 20px;">Tất cả</label>
+
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            <%=checked0%>
+                                            class="custom-control-input check"
+                                            value="0"
+                                            id="price-1"/>
+                                    <label class="custom-control-label " for="price-1"style="padding-left: 20px;">0 - 300,000đ</label>
+
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            value="300000"
+                                            <%=checked1%>
+                                            class="custom-control-input check"
+                                            id="price-2"/>
+                                    <label class="custom-control-label" for="price-2" style="padding-left: 20px;">300,000đ - 600,000đ</label>
+
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            value="600000"
+                                            <%=checked2%>
+                                            class="custom-control-input check"
+                                            id="price-3"/>
+                                    <label class="custom-control-label" for="price-3" style="padding-left: 20px;">600,000đ - 900,000đ</label>
+
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input
+                                            type="checkbox"
+                                            name="price"
+                                            value="900000"
+                                            <%=checked3%>
+                                            class="custom-control-input check"
+                                            id="price-4"/>
+                                    <label class="custom-control-label" for="price-4"style="padding-left: 20px;">900,000đ - 1,200,000đ</label>
+
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <button
+                                        class="btn btn-primary btn-block border-0 py-3 "
+                                        style="border-radius: 5px; font-size: 25px; padding: 5px !important;"
+                                        type="submit">
+                                    Lọc
+                                </button>
+                            </div>
+                        </form>
 
                     </div>
                 </div>
@@ -259,11 +336,7 @@
             $('.check').not(this).prop('checked', false);
         });
     });
-    $(document).ready(function () {
-        $('.check1').click(function () {
-            $('.check1').not(this).prop('checked', false);
-        });
-    });
+
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -287,6 +360,7 @@
         });
     }
 </script>
+
 </body>
 
 </html>

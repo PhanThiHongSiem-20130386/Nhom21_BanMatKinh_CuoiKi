@@ -16,6 +16,7 @@ public class FilterProductConntroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] price = request.getParameterValues("price");
+
         String cid = request.getParameter("cid");
         List<Product> list = ProductService.getListCById(cid);
         Category ca = ProductService.getNameC(Integer.parseInt(cid));
@@ -23,6 +24,7 @@ public class FilterProductConntroller extends HttpServlet {
         String checked = "checked";
         for (String price0 : price) {
             int price1 = Integer.parseInt(price0);
+            System.out.println(price1);
             int price2 = price1 + 300000;
             for (Product p : list) {
                 if (price1==1) {

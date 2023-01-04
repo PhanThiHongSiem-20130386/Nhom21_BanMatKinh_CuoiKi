@@ -15,18 +15,13 @@
     <link rel="stylesheet" href="css/cart.css">
     <link href="./image/logo/DST%20(1089%20×%20371%20px)%20(4).png" rel="icon"/>
     <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
+    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="stylesheet" href="css/core-style.css">
     <link rel="stylesheet" href="./css/styles.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Giỏ hàng</title>
-
-    <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
-
-    <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css">
 
 
 </head>
@@ -110,10 +105,10 @@
                         <div class="cart-btn mt-100">
 
 
-                            <p class="btn amado-btn w-100">Giỏ hàng của bạn không có sản phẩm</p>
+                            <p class="btn amado-btn w-100"  style="background-color: orange; color: #242424">Giỏ hàng của bạn không có sản phẩm</p>
 
 
-                            <a href="checkout" class="btn amado-btn w-100">Thanh toán</a>
+                            <a href="checkout" class="btn amado-btn w-100" style="background-color: orange; color: #242424">Thanh toán</a>
 
                         </div>
                     </div>

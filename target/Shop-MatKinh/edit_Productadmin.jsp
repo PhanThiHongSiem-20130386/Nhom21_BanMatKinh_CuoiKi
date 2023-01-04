@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Title</title>
+    <title>Admin- Chỉnh sửa sản phẩm</title>
 </head>
 <body>
 <div class="container-xl px-4 mt-4">
@@ -100,6 +100,7 @@
 
                             <!-- Save changes button-->
                             <button class="btn btn-primary" type="submit">Lưu thông tin</button>
+                            <a href="AdminDeleteProduct?idP=<%=p.getId()%>" class="btn btn-primary" type="submit">Xóa </a>
                         </form>
                     </div>
                 </div>

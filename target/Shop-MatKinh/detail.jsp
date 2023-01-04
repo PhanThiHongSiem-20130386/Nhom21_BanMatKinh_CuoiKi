@@ -1,6 +1,9 @@
 <%@ page import="shop.com.vn.model.Product" %>
 <%@ page import="shop.com.vn.model.Cart" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="shop.com.vn.model.Account" %>
+<%@ page import="java.util.List" %>
+<%@ page import="shop.com.vn.model.Review" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,11 +30,7 @@
     NumberFormat nf = NumberFormat.getInstance();
     nf.setMinimumFractionDigits(0);
     Product p = (Product) request.getAttribute("product");
-    Cart cart = (Cart) session.getAttribute("cart");
-    if (cart == null) {
-        cart = new Cart();
-        session.setAttribute("cart", cart);
-    }
+
 %>
 <div class="pd-wrap" style="margin-top: 90px">
     <div class="container">
@@ -47,23 +46,11 @@
             <div class="col-md-6">
                 <div class="product-dtl">
                     <div class="product-info">
-                        <div class="product-name"><%=p.getName()%></div>
-                        <div class="reviews-counter">
-                            <div class="rate">
-                                <input type="radio" id="star5" name="rate" value="5" checked/>
-                                <label for="star5" title="text">5 stars</label>
-                                <input type="radio" id="star4" name="rate" value="4" checked/>
-                                <label for="star4" title="text">4 stars</label>
-                                <input type="radio" id="star3" name="rate" value="3" checked/>
-                                <label for="star3" title="text">3 stars</label>
-                                <input type="radio" id="star2" name="rate" value="2"/>
-                                <label for="star2" title="text">2 stars</label>
-                                <input type="radio" id="star1" name="rate" value="1"/>
-                                <label for="star1" title="text">1 star</label>
-                            </div>
-                            <span  style="color: #111111">3 Reviews</span>
+                        <div class="product-name"><%=p.getName()%>
                         </div>
-                        <div class="product-price-discount" ><span style="color: #111111"> <%=nf.format(p.getPrice())%>đ</span>
+                       
+                        <div class="product-price-discount"><span
+                                style="color: #111111"> <%=nf.format(p.getPrice())%>đ</span>
                         </div>
                     </div>
 
@@ -98,9 +85,12 @@
                        aria-controls="description" aria-selected="true">Mô tả</a>
                 </li>
                 <li class="nav-item">
+                    <%
+                        List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
+                    %>
                     <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
                        aria-controls="review"
-                       aria-selected="false">Đánh giá (0)</a>
+                       aria-selected="false">Đánh giá (<%=reviewList.size()%>)</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -110,42 +100,52 @@
                 </div>
                 <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                     <div class="review-heading">Đánh giá</div>
-                    <p class="mb-20">There are no reviews yet.</p>
-                    <form class="review-form">
+                    <%
+
+                        for (Review r : reviewList) {
+
+                    %>
+                    <p class="mb-20"><%=r.getContent()%>
+                    </p>
+                    <hr style=" border: 1px solid #111111; width: 100px; ">
+
+                    <%}%>
+                    <form class="review-form" action="review">
+                        <%--                        <div class="form-group">--%>
+                        <%--                            <label>Your rating</label>--%>
+                        <%--                            <div class="reviews-counter">--%>
+                        <%--                                <div class="rate">--%>
+                        <%--                                    <input type="radio" id="star5" name="rate" value="5"/>--%>
+                        <%--                                    <label for="star5" title="text">5 stars</label>--%>
+                        <%--                                    <input type="radio" id="star4" name="rate" value="4"/>--%>
+                        <%--                                    <label for="star4" title="text">4 stars</label>--%>
+                        <%--                                    <input type="radio" id="star3" name="rate" value="3"/>--%>
+                        <%--                                    <label for="star3" title="text">3 stars</label>--%>
+                        <%--                                    <input type="radio" id="star2" name="rate" value="2"/>--%>
+                        <%--                                    <label for="star2" title="text">2 stars</label>--%>
+                        <%--                                    <input type="radio" id="star1" name="rate" value="1"/>--%>
+                        <%--                                    <label for="star1" title="text">1 star</label>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
                         <div class="form-group">
-                            <label>Your rating</label>
-                            <div class="reviews-counter">
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5"/>
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4"/>
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3"/>
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2"/>
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1"/>
-                                    <label for="star1" title="text">1 star</label>
-                                </div>
-                            </div>
+                            <label>Đánh giá của bạn</label>
+                            <textarea class="form-control" rows="10" name="content"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label>Your message</label>
-                            <textarea class="form-control" rows="10"></textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="" class="form-control" placeholder="Name*">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="" class="form-control" placeholder="Email Id*">
-                                </div>
-                            </div>
-                        </div>
-                        <button class="round-black-btn">Gửi </button>
+
+                        <%
+                            Account ac = (Account) request.getSession().getAttribute("auth");
+
+                            if (ac != null) {
+
+
+                        %>
+                        <input name="idp" value="<%=p.getId()%>" type="hidden">
+                        <input name="ida" value="<%=ac.getId()%>" type="hidden">
+                        <button class="btn btn-primary" type="submit">Đánh giá</button>
+                        <%} else {%>
+                        <button class="btn btn-primary">Đăng nhập để dánh giá</button>
+                        <%}%>
                     </form>
                 </div>
             </div>

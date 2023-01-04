@@ -1,7 +1,9 @@
 package shop.com.vn.controller;
 
 import shop.com.vn.model.Product;
+import shop.com.vn.model.Review;
 import shop.com.vn.service.ProductService;
+import shop.com.vn.service.ReviewService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,12 +17,10 @@ public class DetailProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         Product product = ProductService.getProductById(id);
-
+        List<Review> reviewList = ReviewService.getAllReviewByIdp(String.valueOf(product.getId()));
+        request.setAttribute("reviewList", reviewList);
         request.setAttribute("product", product);
-
-
         request.getRequestDispatcher("detail.jsp").forward(request, response);
-
 
 
     }

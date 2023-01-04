@@ -15,17 +15,15 @@ import java.util.List;
 public class CategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        Integer cid = parseToNumber(request.getParameter("cid"));
-       // List<Product> list = ProductService.getListCById(cid);
-        Category ca = ProductService.getNameC(cid);
+        String cid = request.getParameter("cid");
+        List<Product> list = ProductService.getListCById(cid);
+        Category ca = ProductService.getNameC(Integer.parseInt(cid));
         String checked = "checked";
         request.setAttribute("checked4", checked);
 
         request.setAttribute("nameC", ca);
-        //request.setAttribute("list", list);
-        request.setAttribute("cid",cid);
-//        request.getAttribute(cid);
+        request.setAttribute("list", list);
+        request.setAttribute("cid", cid);
         request.getRequestDispatcher("category.jsp").forward(request, response);
 
     }
@@ -34,23 +32,17 @@ public class CategoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private Integer parseToNumber(String receivedParam)
-    {
-        System.out.println("received param:"+receivedParam);
-        if (receivedParam != null && !receivedParam.trim().isEmpty())
-        {
-            try
-            {
+
+    private Integer parseToNumber(String receivedParam) {
+        System.out.println("received param:" + receivedParam);
+        if (receivedParam != null && !receivedParam.trim().isEmpty()) {
+            try {
                 return Integer.parseInt(receivedParam.trim());
-            }
-            catch (NumberFormatException nfe)
-            {
+            } catch (NumberFormatException nfe) {
                 System.out.println("received param is not a number");
                 return null;
             }
-        }
-        else
-        {
+        } else {
             System.out.println("received param is null or empty");
             return null;
         }

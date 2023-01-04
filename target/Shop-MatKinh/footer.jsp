@@ -1,6 +1,21 @@
 <%@ page import="shop.com.vn.model.Footer" %>
 <%@ page import="shop.com.vn.service.FooterService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="cssAdmin/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>DST-Mắt kính hàng đầu Việt Nam</title>
+    <link rel="stylesheet" href="./css/formDky.css">
+
+</head>
+<body>
 <div class="footer">
     <div class="footer-wrap">
         <div id="block_3">
@@ -25,7 +40,7 @@
                         <div class="ux-menu stack stack-col justify-start ux-menu--divider-solid">
                             <div class="ux-menu-link flex menu-item">
                                 <a class="ux-menu-link__link flex">
-                                        <span class="ux-menu-link__text">
+                                        <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
                                               <%=footer.getCertify()%>
                                         </span>
                                 </a>
@@ -33,7 +48,7 @@
 
                             <div class="ux-menu-link flex menu-item">
                                 <a class="ux-menu-link__link flex">
-                                        <span class="ux-menu-link__text">
+                                        <span class="ux-menu-link__text" style="color: #FFFFFF!important; ">
                                               <%=footer.getPay()%>
                                         </span>
                                 </a>
@@ -41,7 +56,7 @@
 
                             <div class="ux-menu-link flex menu-item">
                                 <a class="ux-menu-link__link flex">
-                                        <span class="ux-menu-link__text">
+                                        <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
                                               <%=footer.getPromotion()%>
                                         </span>
                                 </a>
@@ -56,31 +71,35 @@
 
                         <div class="phone-shop">
                             <a class="ux-menu-link__link flex">
-                                    <span class="ux-menu-link__text">
+                                    <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
                                         SĐT:   <%=footer.getPhone()%>
                                     </span>
                             </a>
                         </div>
                         <div class="address-shop">
                             <a class="ux-menu-link__link flex">
-                                    <span class="ux-menu-link__text">
+                                    <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
                                         Địa chỉ:   <%=footer.getAddress()%>
                                     </span>
                             </a>
                             <div class="mail-shop">
                                 <a class="ux-menu-link__link flex">
-                                    <span class="ux-menu-link__text">
+                                    <span class="ux-menu-link__text" style="color: #FFFFFF!important;">
                                         Email:   <%=footer.getEmail()%>
                                     </span>
                                 </a>
                             </div>
                             <div class="social-icons follow-icons" style="font-size:115%">
-                                <a href="#" class="slow_fade social_button "><img
-                                        src="assets/image/social_icons/yt.png"></a>
-                                <a href="#" class="slow_fade social_button"><img
-                                        src="assets/image/social_icons/twitter.png"></a>
-                                <a href="#" class="slow_fade social_button"><img
-                                        src="assets/image/social_icons/facebook.png"></a>
+                                <a href="#" class="slow_fade social_button ">
+                                    <i class="ti-facebook"style="color: #FFFFFF"></i>
+                                </a>
+                                <a href="#" class="slow_fade social_button">
+                                    <i class="ti-twitter-alt"style="color: #FFFFFF"></i>
+                                </a>
+                                <a href="#" class="slow_fade social_button">
+                                    <i class="ti-youtube" style="color: #FFFFFF"></i>
+                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -91,3 +110,4 @@
         </div>
     </div>
 </div>
+</body>

@@ -4,6 +4,8 @@
 <%@ page import="shop.com.vn.service.ProductService" %>
 <%@ page import="shop.com.vn.model.*" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="shop.com.vn.service.ProductOrderService" %>
+<%@ page import="java.util.Collections" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,7 +20,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%--    <link rel="stylesheet" href="./css/templatemo-style.css"/>--%>
 
-    <title>Title</title>
+    <title>Quản lí đơn hàng</title>
 </head>
 <body>
 <jsp:include page="headeradmin.jsp"></jsp:include>
@@ -69,12 +71,14 @@
                         <th scope="col">Họ và tên</th>
                         <th scope="col">Trạng thái</th>
                         <th scope="col">Tổng tiền</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
 
                     <%
-                        List<Order> orderList = (List<Order>) request.getAttribute("list");
+                        List<Order> orderList = (List<Order>) request.getAttribute("orderList");
+                        Collections.reverse(orderList);
                         for (Order order : orderList) {
                     %>
                     <tr>
@@ -82,39 +86,41 @@
                         </td>
                         <td>
                             <a href="" style="color: #111111">
-                                <%=order.getLastName() + order.getFirstName()%>
+                                <%=order.getFirstName()%>
                             </a>
                         </td>
 
-                        <td class='form-input input-small'>
-                            <label>Trạng thái</label><br/>
+                        <td><%
+                            String status = "";
+                            if (order.getStatus() == 1) {
+                                status = "Chờ xác nhận";
+                            }
+                            if (order.getStatus() == 2) {
+                                status = "Giao hàng";
+                            }
+                            if (order.getStatus() == 3) {
+                                status = "Đã nhận hàng";
+                            }
+                        %>
+                            <%=status%>
 
-
-                            <select name="payment" style="min-width: 233px; min-height: 42px">
-                                <%
-                                    List<Status> listSta = (List<Status>) request.getAttribute("listSta");
-                                    for (Status st : listSta) {
-                                %>
-                                <option value="<%=st.getidsta()%> "><%=st.getnamesta()%>
-                                </option>
-
-                                <%}%>
-                            </select>
                         </td>
                         <%
-                            List<Account> auth1 = (List<Account>) request.getAttribute("auth");
                             NumberFormat nf = NumberFormat.getInstance();
                             nf.setMinimumFractionDigits(0);
-                            int totalPrice = 0;
-                            List<Cart> cartList = (List<Cart>) request.getAttribute("listCart");
-                            for (Cart c : cartList) {
-                                Product p = ProductService.getProductById(String.valueOf(c.getIdProduct()));
-                                totalPrice += p.getPrice() * c.getQuantity();
+                            List<ProductOrder> productOrderList = ProductOrderService.getProductOrderByIdO(String.valueOf(order.getIdorder()));
+                            int totalprice = 0;
+                            for (ProductOrder po : productOrderList) {
+                                Product p = ProductService.getProductById(String.valueOf(po.getIdp()));
+                                totalprice += p.getPrice() * po.getQuantity();
+                            }
 
                         %>
-                        <td><%=nf.format(totalPrice)%>
+                        <td><%=nf.format(totalprice)%>
                         </td>
-                        <%}%>
+                        <td>
+                            <a href="adminAccept?ido=<%=order.getIdorder()%>&status=<%=order.getStatus()%>" class="btn btn-primary" >Xác nhận</a>
+                        </td>
                     </tr>
                     <%}%>
 

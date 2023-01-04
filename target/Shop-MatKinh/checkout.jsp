@@ -5,7 +5,7 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="shop.com.vn.model.Cart" %>
 <%@ page import="shop.com.vn.model.Product" %>
-<%@ page import="shop.com.vn.service.ProductService" %><
+<%@ page import="shop.com.vn.service.ProductService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,7 +16,7 @@
     <link href="cssAdmin/css/datepicker3.css" rel="stylesheet">
     <link href="cssAdmin/css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/checkout.css">
-    <title>Title</title>
+    <title>Thanh tóan</title>
 </head>
 
 <body>
@@ -32,7 +32,6 @@
             <div id="shipping-body">
                 <div id="contact-details">
                     <% Account ac = (Account) request.getSession().getAttribute("auth");
-
                         Account a1 = LoginService.getAccoutById(String.valueOf(ac.getId()));
 
                     %>
@@ -126,15 +125,15 @@
                 <input name="idCart" type="hidden" value="<%=c.getIdCart()%>">
                 <td class='cart-title'><%=p.getName()%>
                 </td>
+
+                <td class='cart-title'><%=nf.format(p.getPrice())%>đ</td>
                 <td class='cart-title'><%=c.getQuantity()%>
                 </td>
-                <td class='cart-title'><%=nf.format(p.getPrice())%>đ</td>
-
             </tr>
             <%}%>
             <tr class='shopping-cart-total'>
-                <td class='cart-total'>Tổng tiền</td>
-                <td class='cart-price-total'><%=nf.format(totalPrice)%>đ</td>
+                <td class='cart-total'>Tổng tiền: </td>
+                <td class='cart-price-totalq'><%=nf.format(totalPrice)%>đ</td>
             </tr>
         </table>
     </div>
